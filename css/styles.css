@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-gray-463F3A {
+    background-color: #463F3A;
+}
+.bg-gray-8A817C {
+    background-color: #8A817C;
+}
+.bg-gray-F4F3EE {
+    background-color: #F4F3EE;
+}
+.bg-gray-E0AFA0 {
+    background-color: #E0AFA0;
+}
+
+#footer {
+    text-align: center;
+    color: white;
+    background-color: #463F3A;
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    height: 3rem;            /* Footer height */
+}
