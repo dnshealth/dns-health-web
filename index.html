@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>DNS Health</title>
     <link rel="stylesheet" href="css/styles.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -36,17 +40,13 @@
 
     </nav>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.menu').click(function() {
-                $('ul').toggleClass('active');
-            })
-
-        })
-    </script>
-
     <h1>DNS Health</h1>
+
+    <div class="container">
+        <div id="terminal">
+        </div>
+        <button type="button" id="test">TEST BTN</button>
+    </div>
 
     <footer id="footer">
         Copyright &copy;
@@ -57,6 +57,19 @@
         DNS Health
 
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu').click(function() {
+                $('ul').toggleClass('active');
+            })
+
+        })
+    </script>
+    <script type="text/javascript" src="assets/terminal/terminal.js"></script>
+    <script type="text/javascript" src="js/checker.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>
