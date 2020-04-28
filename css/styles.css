@@ -1,5 +1,105 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "../assets/terminal/terminal.css";
 @import "terminal.css";
+.bg-gray-463F3A {
+    background-color: #463F3A;
+}
+
+.bg-gray-8A817C {
+    background-color: #8A817C;
+}
+
+.bg-gray-F4F3EE {
+    background-color: #F4F3EE;
+}
+
+.bg-gray-E0AFA0 {
+    background-color: #E0AFA0;
+}
+
+#footer {
+    text-align: center;
+    color: white;
+    background-color: #463F3A;
+    position: absolute;
+    display: inline-block;
+    bottom: 1rem;
+    width: 100%;
+    height: 3rem;
+    /* Footer height */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 100%;
+    background: #463F3A;
+}
+
+ul {
+    width: 80%;
+    padding: 0;
+    margin-left: 25px;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 15px;
+}
+
+ul li:hover {
+    background: #8A817C;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.toggle {
+    width: 100%;
+    padding: 10px 20px;
+    text-align: right;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 30px;
+    display: none;
+}
+
+.header {
+    color: #fff;
+    display: flex;
+    margin-left: 50px;
+}
+
+.logo {
+    display: flex;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .toggle {
+        display: block;
+    }
+    ul {
+        width: 100%;
+        display: none;
+    }
+    ul li {
+        display: block;
+    }
+    .active {
+        display: block;
+    }
+    .logo {
+        width: 100%;
+        display: flex;
+        margin-top: 15px;
+    }
+}

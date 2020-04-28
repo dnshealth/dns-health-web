@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>DNS Health</title>
-        <link rel="stylesheet" href="css/styles.min.css"/>
-    </head>
 
-    <body>
-        <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="email" placeholder="jane@example.com">
+<head>
+    <title>DNS Health</title>
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-        <h1>DNS Health</h1>
-        <p>Paragraph</p>
+<body>
+    <nav>
 
-    </body>
+
+        <div class="header">
+            <div class="logo">
+                <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+                </svg>
+                <span class="font-semibold text-xl tracking-tight">DNS Health</span>
+            </div>
+
+
+
+            <div class="toggle">
+                <i class="fa fa-bars menu" aria-hidden="true"></i>
+            </div>
+
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu').click(function() {
+                $('ul').toggleClass('active');
+            })
+
+        })
+    </script>
+
+    <h1>DNS Health</h1>
+
+    <footer id="footer">
+        Copyright &copy;
+        <script type="text/javascript">
+            var d = new Date()
+            document.write(d.getFullYear())
+        </script>
+        DNS Health
+
+    </footer>
+</body>
+
 </html>
