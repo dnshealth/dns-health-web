@@ -57,11 +57,12 @@ class Termynal {
          * Calculates width and height of Termynal container.
          * If container is empty and lines are dynamically loaded, defaults to browser `auto` or CSS.
          */ 
-        const containerStyle = getComputedStyle(this.container);
+        /*const containerStyle = getComputedStyle(this.container);
+        console.log(containerStyle);
         this.container.style.width = containerStyle.width !== '0px' ? 
             containerStyle.width : undefined;
         this.container.style.minHeight = containerStyle.height !== '0px' ? 
-            containerStyle.height : undefined;
+            containerStyle.height : undefined;*/
 
         this.container.setAttribute('data-termynal', '');
         this.container.innerHTML = '';
@@ -143,7 +144,7 @@ class Termynal {
 
     async waitForLock() {
         while(this.lock) {
-            await this._wait(1);
+            await this._wait(10);
         }
     }
 

@@ -17,11 +17,11 @@ class DNSChecker {
                 startDelay: 500,
                 lineData: []
             });
-        $("#terminal").show();
         this.resultsTable = table;
     }
 
     async start(domain, ns) {
+        $("#terminal").show();
         // Print the command to terminal.
         this.terminal.addLines(
             [
