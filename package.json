@@ -1,0 +1,24 @@
+{
+  "name": "dns-health-web",
+  "version": "1.0.0",
+  "description": "A web interface for DNS Health",
+  "main": "postcss.config.js",
+  "dependencies": {
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:css": "postcss css/styles.css -o css/styles.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnshealth/dns-health-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnshealth/dns-health-web/issues"
+  },
+  "homepage": "https://github.com/dnshealth/dns-health-web#readme"
+}
