@@ -15133,6 +15133,8 @@ video {
 
 #terminal {
   display: none;
+  min-height: 600px;
+  overflow-y: auto;
 }
 
 .bg-gray-463F3A {
@@ -15155,17 +15157,23 @@ video {
   text-align: center;
   color: white;
   background-color: #463F3A;
-  position: absolute;
   display: inline-block;
-  bottom: 1rem;
   width: 100%;
   height: 3rem;
+  margin-top: auto;
   /* Footer height */
+}
+
+html {
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
 }
 
 nav {
