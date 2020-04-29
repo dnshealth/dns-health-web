@@ -12,7 +12,7 @@ class DNSChecker {
     constructor(table) {
         // Initialise the terminal view.
         this.terminal = new Termynal(
-            '#terminal',
+            '#results',
             {
                 startDelay: 500,
                 lineData: []
@@ -41,6 +41,7 @@ class DNSChecker {
         // TODO add save stuff to table instead if terminal view is disabled...
         // Then, call an appropriate method to actually initiate the checks.
         var result = ApiHandler.request(
+            "POST",
             "/check",
             {"domain": domain, "nameservers": ns}
             );
