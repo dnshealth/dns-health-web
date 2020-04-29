@@ -43,13 +43,16 @@ class DNSChecker {
         var result = ApiHandler.request(
             "POST",
             "/check",
-            {"domain": domain, "nameservers": ns}
+            {"domain": domain, "nameservers": ns},
+            function(result) {
+              // When the response has been received, this will run.
+                DNSChecker.showResults(result.checks);
+            }
             );
 
-        await this.showResults(result.checks);
     }
 
-    async showResults(results) {
+    static showResults(results) {
         // Before showing the results, they need to first be filled in...
         /* Dummy input
         var results = [
