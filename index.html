@@ -9,42 +9,46 @@
 </head>
 
 <body>
-    <nav>
-        <div class="header">
-            <div class="logo">
-                <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-                </svg>
-                <span class="font-semibold text-xl tracking-tight">DNS Health</span>
-            </div>
-
-            <div class="toggle">
-                <i class="fa fa-bars menu" aria-hidden="true"></i>
-            </div>
-
+    <nav class="flex items-center justify-between flex-wrap bg-gray-463F3A p-2">
+        <div class="flex items-center flex-shrink-0 text-white mr-4">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+            <span class="font-semibold text-2xl tracking-tight">DNS Health</span>
         </div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
+        <div class="block lg:hidden">
+            <button onclick="toggle()" class="flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-white hover:border-white ">
+            <svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg "><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/></svg>
+        </button>
+        </div>
+        <div id="toggle" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
+            <div id="nav_bar" class="text-sm lg:flex-grow ">
+                <a href="#home" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 focus:shadow-outline active-page">
+                Home
+              </a>
+                <a href="#FAQ " class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
+                FAQ
+              </a>
+                <a href="#About" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
+                About
+              </a>
+            </div>
     </nav>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.menu').click(function() {
-                $('ul').toggleClass('active');
-            })
-        })
+    <script>
+        function toggle() {
+            var x = document.getElementById("toggle");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
     </script>
 
     <h1>DNS Health</h1>
 
     <footer id="footer">
         Copyright &copy;
-        <script type="text/javascript">
+        <script type="text/javascript ">
             var d = new Date()
             document.write(d.getFullYear())
         </script>
