@@ -40,12 +40,17 @@ class DNSChecker {
         await this.terminal.addChecks(data);
         // TODO add save stuff to table instead if terminal view is disabled...
         // Then, call an appropriate method to actually initiate the checks.
-        this.showResults();
+        var result = ApiHandler.request(
+            "/check",
+            {"domain": domain, "nameservers": ns}
+            );
+
+        await this.showResults(result.checks);
     }
 
     async showResults(results) {
         // Before showing the results, they need to first be filled in...
-        // Dummy input
+        /* Dummy input
         var results = [
             {"id": 0, "result": false},
             {"id": 1, "result": false},
@@ -59,7 +64,7 @@ class DNSChecker {
             {"id": 9, "result": false},
             {"id": 10, "result": false},
             {"id": 11, "result": false}
-        ];
+        ];*/
         var checks = DNSChecker.getChecks();
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
