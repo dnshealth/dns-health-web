@@ -38,30 +38,36 @@ class ApiHandler {
     static init() {
         if (!this.token) {
             // If we do not have a token, we need to call the token API...
-            var resp = this.request("/auth", null);
-            if (resp != null) {
-                this.token = resp.token;
-            }
+            var resp = this.request(
+                "GET",
+                "/auth",
+                null,
+                function(data) {
+                    if (data != null) {
+                        ApiHandler.token = data.token;
+                    }
+                });
         }
     }
 
-    static request(path, params) {
+    static request(type, path, params, callback) {
         if (this.token)
             params["token"] = this.token;
-
+        console.log(type);
         $.ajax({
-            type: "POST",
+            method: type,
             url: this.apiUrl + path,
             dataType: 'json',
             contentType: 'application/json',
             data: (params != null) ? JSON.stringify(params) : null,
             success: function (d) {
-                return d;
+                // If request was successful, call the function given as an argument.
+                callback(d);
             },
             error: function(d) {
-                console.log("Error occurred during POST request");
+                // If we got an error back, print error to developer console in browser..
+                console.log("Error occurred during request");
                 console.log(d);
-                return null;
             }
         })
     }
