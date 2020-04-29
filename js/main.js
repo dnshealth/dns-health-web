@@ -6,6 +6,9 @@ function getFormData($form){
     $.map(unindexed_array, function(n, i){
         // If key already exists, then make the key contain an array where we push the second element.
         // This will allow us to get arrays of nameservers in the ns[]
+        if (!n['value'])
+            return
+
         if (indexed_array[n['name']] && !Array.isArray(indexed_array[n['name']]))
             indexed_array[n['name']] = [indexed_array[n['name']]];
         if (indexed_array[n['name']] && Array.isArray(indexed_array[n['name']]))
@@ -25,6 +28,12 @@ $(document).ready(function() {
     $("#dnscheck").submit(function(e) {
         e.preventDefault();
         var data = getFormData($(this));
+
+        // If we only have one nameserver, we still want it to have in an array for the backend
+        if (!Array.isArray(data["ns[]"])) {
+            data["ns[]"] = [data["ns[]"]];
+        }
+
         checker.start(data["domain"], data["ns[]"]);
     });
 });
@@ -53,7 +62,7 @@ class ApiHandler {
     static request(type, path, params, callback) {
         if (this.token)
             params["token"] = this.token;
-        console.log(type);
+
         $.ajax({
             method: type,
             url: this.apiUrl + path,
