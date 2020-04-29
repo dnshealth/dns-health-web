@@ -3,6 +3,32 @@
 @import "tailwindcss/utilities";
 @import "../assets/terminal/terminal.css";
 @import "terminal.css";
+.centerlist {
+    vertical-align: middle;
+    border-style: none;
+  }
+  
+  h1 {
+    font-weight:bold;
+    vertical-align: left;
+    float: middle;
+    font-size: 48px;
+}
+
+  .faqh {
+    font-weight: bold;
+    font-size: 24px;
+    vertical-align: left;
+    float: left;
+   
+  }
+  .faqc {
+    vertical-align: left;
+    color: #8A817C;
+    float: left;
+  }
+
+
 .bg-gray-463F3A {
     background-color: #363537;
 }
@@ -26,8 +52,15 @@
 #footer {
     text-align: center;
     color: white;
+<<<<<<< HEAD
     background-color: #363537;
     display: block;
+=======
+    background-color: #463F3A;
+    position: absolute;
+    display: inline-block;
+    bottom: 1rem;
+>>>>>>> 15581fbf4cb8bc6d4b92b487d96dd63f7b4bd407
     width: 100%;
     height: 2rem;
     left: 0;
@@ -49,7 +82,7 @@ nav {
 ul {
     width: 80%;
     padding: 0;
-    margin-left: 25px;
+    margin-right: 25px;
 }
 
 ul li {
@@ -107,4 +140,9 @@ ul li a {
         display: flex;
         margin-top: 15px;
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 15581fbf4cb8bc6d4b92b487d96dd63f7b4bd407
