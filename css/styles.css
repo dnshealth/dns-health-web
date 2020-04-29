@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "../assets/terminal/terminal.css";
+@import "terminal.css";
 .bg-gray-463F3A {
     background-color: #463F3A;
 }

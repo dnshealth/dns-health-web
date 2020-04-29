@@ -14962,6 +14962,179 @@ video {
   transition-delay: 1000ms;
 }
 
+/**
+ * terminal
+ *
+ * Amended from termynal.js
+ * @author Ines Montani <ines@ines.io>
+ * @author Kasper Oikarinen <kasper@kasgel.fi>
+ * @version 0.0.1
+ * @license MIT
+ */
+
+:root {
+  --color-bg: #252a33;
+  --color-text: #eee;
+  --color-text-subtle: #a2a2a2;
+}
+
+[data-termynal] {
+  width: 750px;
+  max-width: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 18px;
+  font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
+  border-radius: 4px;
+  padding: 75px 45px 35px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+[data-termynal]:before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  /* A little hack to display the window buttons in one pseudo element. */
+  background: #d9515d;
+  box-shadow: 25px 0 0 #f4c025, 50px 0 0 #3ec930;
+}
+
+[data-termynal]:after {
+  content: 'bash';
+  position: absolute;
+  color: var(--color-text-subtle);
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+[data-ty] {
+  display: block;
+  line-height: 2;
+}
+
+[data-ty]:before {
+  /* Set up defaults and ensure empty lines are displayed. */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+}
+
+[data-ty="input"]:before,
+[data-ty-prompt]:before {
+  margin-right: 0.75em;
+  color: var(--color-text-subtle);
+}
+
+[data-ty="input"]:before {
+  content: '$';
+}
+
+[data-ty][data-ty-prompt]:before {
+  content: attr(data-ty-prompt);
+}
+
+[data-ty-cursor]:after {
+  content: attr(data-ty-cursor);
+  font-family: monospace;
+  margin-left: 0.5em;
+  -webkit-animation: blink 1s infinite;
+  animation: blink 1s infinite;
+}
+
+/* Line colours */
+
+.white[data-ty] {
+  color: #FFFFFF;
+}
+
+.green[data-ty] {
+  color: #2FBF71;
+}
+
+.red[data-ty] {
+  color: #EF2D56;
+}
+
+.loading:after {
+  content: '.';
+  -webkit-animation: dots 1s steps(5, end) infinite;
+          animation: dots 1s steps(5, end) infinite;
+}
+
+@-webkit-keyframes dots {
+  0%, 20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  40% {
+    color: white;
+    text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  60% {
+    text-shadow: .25em 0 0 white,
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  80%, 100% {
+    text-shadow: .25em 0 0 white,
+        .5em 0 0 white;
+  }
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  40% {
+    color: white;
+    text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  60% {
+    text-shadow: .25em 0 0 white,
+        .5em 0 0 rgba(0, 0, 0, 0);
+  }
+
+  80%, 100% {
+    text-shadow: .25em 0 0 white,
+        .5em 0 0 white;
+  }
+}
+
+/* Cursor animation */
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#terminal {
+  display: none;
+}
+
 .bg-gray-463F3A {
   background-color: #463F3A;
 }
@@ -14983,9 +15156,88 @@ video {
   color: white;
   background-color: #463F3A;
   position: absolute;
+  display: inline-block;
   bottom: 1rem;
   width: 100%;
-  height: 3rem;            /* Footer height */
+  height: 3rem;
+  /* Footer height */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  background: #463F3A;
+}
+
+ul {
+  width: 80%;
+  padding: 0;
+  margin-left: 25px;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 15px;
+}
+
+ul li:hover {
+  background: #8A817C;
+}
+
+ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.toggle {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: right;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 30px;
+  display: none;
+}
+
+.header {
+  color: #fff;
+  display: flex;
+  margin-left: 50px;
+}
+
+.logo {
+  display: flex;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .toggle {
+    display: block;
+  }
+
+  ul {
+    width: 100%;
+    display: none;
+  }
+
+  ul li {
+    display: block;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .logo {
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+  }
 }
 
 @media (min-width: 640px) {
