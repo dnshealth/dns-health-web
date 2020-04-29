@@ -40,12 +40,10 @@
 </nav>
 
 <div>
-	<!-- -->
-	<!-- Three columns -->
-	<!-- Domain input field start -->
-	<div style="margin-top: 50px" class="w-full flex justify-center">
-		<div class="w-1/2">
-			<form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+	<!-- Two columns -->
+	<div class="flex justify-center mb-4" style="margin-top: 20px">
+		<div class="w-2/3 flex justify-center h-12" style="margin-top: 20px">
+			<form id="dnscheck" name="dnscheck" class="w-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 				<div class="input_fields_container_part">
 					<div>
 						<label class="block text-sm font-bold mb-2" for="domain">
@@ -81,7 +79,7 @@
 						<input id="ns1" type="text" placeholder="" name="ns[]"
 						       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
 						<!-- NS server input END  -->
-					
+						
 						
 						<!-- Display the value taken from domain - just for testing	-->
 						<p id="demo"></p>
@@ -103,9 +101,12 @@
 				</div>
 			
 			</form>
+		</div>
+		<div class="w-1/2 h-12" style=" margin-right: 10px; margin-bottom: 10px">
 			<div id="terminal"></div>
 		</div>
 	</div>
+	<!-- Domain input field start -->
 
 </div>
 
