@@ -23,6 +23,7 @@ class DNSChecker {
     async start(domain, ns) {
         if ($('input#terminal-view').is(':checked')) {
             $("#terminal").html('');
+            $("#table-main").html('');
             $("#terminal").show();
             // Print the command to terminal.
             this.terminal.addLines(

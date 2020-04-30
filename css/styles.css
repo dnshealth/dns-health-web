@@ -10,6 +10,9 @@
     float: middle;
 }
 
+html {
+    height: 100%;
+}
 img {
     display: inline-block;
     vertical-align: right;
@@ -72,20 +75,23 @@ h3 {
     text-align: center;
     color: white;
     background-color: #363537;
-    position: absolute;
     display: inline-block;
     bottom: 1rem;
     width: 100%;
     height: 2rem;
     left: 0;
     bottom: 0;
-    position: fixed;
+    margin-top: auto;
     /* Footer height */
 }
 
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
 }
 
 nav {
