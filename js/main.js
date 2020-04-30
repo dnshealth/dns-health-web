@@ -23,6 +23,11 @@ function getFormData($form) {
 
 // This function will be called when the page has finished loading.
 $(document).ready(function () {
+    // Make the menu toggle button work
+    $('.show-hide').click(function () {
+        $(this).next().toggleClass('hidden');
+    });
+
     // Initialise our api handler to the REST API
     ApiHandler.apiUrl =  "https://api.dnshealth.eu/v1";
     ApiHandler.token = false;

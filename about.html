@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav class="flex items-center justify-between flex-wrap bg-gray-463F3A p-2">
+<nav class="flex items-center justify-between flex-wrap bg-gray-363537 p-2">
     <div class="flex items-center flex-shrink-0 text-white mr-4">
         <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
              xmlns="http://www.w3.org/2000/svg">
@@ -18,19 +18,18 @@
         </svg>
         <span class="font-semibold text-2xl tracking-tight">DNS Health</span>
     </div>
-    <div class="block lg:hidden">
-        <button onclick="toggle()"
-                class="flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-white hover:border-white ">
-            <svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg "><title>
+    <div class="show-hide block lg:hidden">
+        <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
+            <svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg"><title>
                 Menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/>
             </svg>
         </button>
     </div>
-    <div id="toggle" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto ">
-        <div id="nav_bar" class="text-sm lg:flex-grow ">
-            <a href="index.html"
-               class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 focus:shadow-outline active-page">
+
+    <div id="information" class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block ">
+        <div id="nav_bar" class="text-sm lg:flex-grow">
+            <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4">
                 Home
             </a>
             <a href="faq.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
@@ -40,7 +39,10 @@
                 About
             </a>
         </div>
+    </div>
+
 </nav>
+
 
 <h1 class="text-center">About</h1>
 <div class="flex justify-center my-8">
@@ -176,7 +178,8 @@
     </table>
 </div>
 
-
+<script type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>
