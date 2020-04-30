@@ -6,6 +6,27 @@
 .centerlist {
     vertical-align: middle;
     border-style: none;
+    float: middle;
+  }
+  img {
+      display:inline-block;
+      vertical-align: right;
+  }
+
+  .leftlist {
+      vertical-align: left;
+      float: left;
+      width: 49%;
+      padding-left: 25px;
+      //background-color: #FFAE00;
+      background-color: #FFFFFF;
+  }
+  .rightlist {
+      width: 49%;
+      float: right;
+      //background-color: #FFAE00;
+      background-color: #FFFFFF;
+      padding-left: 25px;
   }
   
 table {
@@ -18,17 +39,32 @@ h1 {
     font-size: 48px;
 }
 
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    vertical-align: left;
+
+}
+
   .faqh {
     font-weight: bold;
-    font-size: 24px;
-    vertical-align: left;
-    float: left;
+    font-size: 16px;
+    
    
   }
   .faqc {
-    vertical-align: left;
+    //color: #8A817C;
+    color:	#646464;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .aboc{
+    vertical-align:middle;
     color: #8A817C;
-    float: left;
+    text-align: justify;
+    text-justify: inter-word;
+    width : 20%;
   }
 
 .bg-gray-463F3A {
