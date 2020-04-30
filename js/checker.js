@@ -53,7 +53,7 @@ class DNSChecker {
             );
         } else {
             $("#terminal").hide();
-            $("#table-main").html('');
+            $("#table-view").html('');
             // TODO show results table
             $("#table-main").show();
             var result = ApiHandler.request(
