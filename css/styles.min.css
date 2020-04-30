@@ -15135,6 +15135,54 @@ video {
   display: none;
 }
 
+.centerlist {
+  vertical-align: middle;
+  border-style: none;
+  float: middle;
+}
+
+img {
+  display: inline-block;
+  vertical-align: right;
+}
+
+/*.leftlist {
+    float: left;
+    width: 49%;
+    padding-left: 25px;
+    background-color: #FFFFFF;
+}
+
+.rightlist {
+    width: 49%;
+    float: right;
+    background-color: #FFFFFF;
+    padding-left: 25px;
+}*/
+
+div.faq {
+  background-color: rgba(205, 202, 202, 0.53);
+  border-radius: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  vertical-align: left;
+  float: middle;
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  vertical-align: left;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .bg-gray-463F3A {
   background-color: #463F3A;
 }
@@ -15173,27 +15221,6 @@ nav {
   background: #463F3A;
 }
 
-ul {
-  width: 80%;
-  padding: 0;
-  margin-left: 25px;
-}
-
-ul li {
-  list-style: none;
-  display: inline-block;
-  padding: 15px;
-}
-
-ul li:hover {
-  background: #8A817C;
-}
-
-ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
 .toggle {
   width: 100%;
   padding: 10px 20px;
@@ -15220,14 +15247,13 @@ ul li a {
     display: block;
   }
 
-  ul {
-    width: 100%;
-    display: none;
-  }
-
-  ul li {
-    display: block;
-  }
+  /*ul {
+        width: 100%;
+        display: none;
+    }
+    ul li {
+        display: block;
+    }*/
 
   .active {
     display: block;
@@ -72603,3 +72629,4 @@ ul li a {
     transition-delay: 1000ms;
   }
 }
+
