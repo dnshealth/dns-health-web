@@ -14979,7 +14979,7 @@ video {
 }
 
 [data-termynal] {
-  /*width: 750px;*/
+  width: 750px;
   max-width: 100%;
   background: var(--color-bg);
   color: var(--color-text);
@@ -15133,33 +15133,54 @@ video {
 
 #terminal {
   display: none;
-  min-height: 800px;
-  overflow-y: auto;
 }
 
 .centerlist {
   vertical-align: middle;
   border-style: none;
+  float: middle;
+}
+
+img {
+  display: inline-block;
+  vertical-align: right;
+}
+
+/*.leftlist {
+    float: left;
+    width: 49%;
+    padding-left: 25px;
+    background-color: #FFFFFF;
+}
+
+.rightlist {
+    width: 49%;
+    float: right;
+    background-color: #FFFFFF;
+    padding-left: 25px;
+}*/
+
+div.faq {
+  background-color: rgba(205, 202, 202, 0.53);
+  border-radius: 25px;
 }
 
 h1 {
-  font-weight:bold;
+  font-weight: bold;
   vertical-align: left;
   float: middle;
   font-size: 48px;
 }
 
-.faqh {
-  font-weight: bold;
+h2 {
   font-size: 24px;
+  font-weight: bold;
   vertical-align: left;
-  float: left;
 }
 
-.faqc {
-  vertical-align: left;
-  color: #8A817C;
-  float: left;
+h3 {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .bg-gray-463F3A {
@@ -15178,57 +15199,26 @@ h1 {
   background-color: #E0AFA0;
 }
 
-#nav_bar a.active-page {
-  background-color: ;
-}
-
 #footer {
   text-align: center;
   color: white;
   background-color: #463F3A;
+  position: absolute;
   display: inline-block;
+  bottom: 1rem;
   width: 100%;
   height: 3rem;
-  margin-top: auto;
   /* Footer height */
-}
-
-html {
-  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  display:flex;
-  flex-direction:column;
 }
 
 nav {
   width: 100%;
   background: #463F3A;
-}
-
-ul {
-  width: 80%;
-  padding: 0;
-  margin-right: 25px;
-}
-
-ul li {
-  list-style: none;
-  display: inline-block;
-  padding: 15px;
-}
-
-ul li:hover {
-  background: #8A817C;
-}
-
-ul li a {
-  color: #fff;
-  text-decoration: none;
 }
 
 .toggle {
@@ -15250,8 +15240,6 @@ ul li a {
 .logo {
   display: flex;
   margin-top: 10px;
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 @media (max-width: 768px) {
@@ -15259,14 +15247,13 @@ ul li a {
     display: block;
   }
 
-  ul {
-    width: 100%;
-    display: none;
-  }
-
-  ul li {
-    display: block;
-  }
+  /*ul {
+        width: 100%;
+        display: none;
+    }
+    ul li {
+        display: block;
+    }*/
 
   .active {
     display: block;
@@ -72642,3 +72629,4 @@ ul li a {
     transition-delay: 1000ms;
   }
 }
+

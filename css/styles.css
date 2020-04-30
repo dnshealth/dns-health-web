@@ -3,37 +3,39 @@
 @import "tailwindcss/utilities";
 @import "../assets/terminal/terminal.css";
 @import "terminal.css";
+
 .centerlist {
     vertical-align: middle;
     border-style: none;
     float: middle;
-  }
-  img {
-      display:inline-block;
-      vertical-align: right;
-  }
-
-  .leftlist {
-      vertical-align: left;
-      float: left;
-      width: 49%;
-      padding-left: 25px;
-      //background-color: #FFAE00;
-      background-color: #FFFFFF;
-  }
-  .rightlist {
-      width: 49%;
-      float: right;
-      //background-color: #FFAE00;
-      background-color: #FFFFFF;
-      padding-left: 25px;
-  }
-  
-table {
-    float: center;
 }
+
+img {
+    display: inline-block;
+    vertical-align: right;
+}
+
+/*.leftlist {
+    float: left;
+    width: 49%;
+    padding-left: 25px;
+    background-color: #FFFFFF;
+}
+
+.rightlist {
+    width: 49%;
+    float: right;
+    background-color: #FFFFFF;
+    padding-left: 25px;
+}*/
+
+div.faq {
+    background-color: rgba(205, 202, 202, 0.53);
+    border-radius: 25px;
+}
+
 h1 {
-    font-weight:bold;
+    font-weight: bold;
     vertical-align: left;
     float: middle;
     font-size: 48px;
@@ -43,29 +45,12 @@ h2 {
     font-size: 24px;
     font-weight: bold;
     vertical-align: left;
-
 }
 
-  .faqh {
-    font-weight: bold;
+h3 {
     font-size: 16px;
-    
-   
-  }
-  .faqc {
-    //color: #8A817C;
-    color:	#646464;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-
-  .aboc{
-    vertical-align:middle;
-    color: #8A817C;
-    text-align: justify;
-    text-justify: inter-word;
-    width : 20%;
-  }
+    font-weight: bold;
+}
 
 .bg-gray-463F3A {
     background-color: #463F3A;
@@ -105,27 +90,6 @@ nav {
     background: #463F3A;
 }
 
-ul {
-    width: 80%;
-    padding: 0;
-    margin-right: 25px;
-}
-
-ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 15px;
-}
-
-ul li:hover {
-    background: #8A817C;
-}
-
-ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
 .toggle {
     width: 100%;
     padding: 10px 20px;
@@ -151,16 +115,18 @@ ul li a {
     .toggle {
         display: block;
     }
-    ul {
+
+    /*ul {
         width: 100%;
         display: none;
     }
     ul li {
         display: block;
-    }
+    }*/
     .active {
         display: block;
     }
+
     .logo {
         width: 100%;
         display: flex;
