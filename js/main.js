@@ -4,11 +4,12 @@ function getFormData($form) {
     var indexed_array = {};
 
     $.map(unindexed_array, function (n, i) {
-        // If key already exists, then make the key contain an array where we push the second element.
-        // This will allow us to get arrays of nameservers in the ns[]
+        // If the value is empty, do not add it to our indexed array. This will prevent us from adding e.g.
+        // empty nameserver fields.
         if (!n['value'])
             return
-
+        // If key already exists, then make the key contain an array where we push the second element.
+        // This will allow us to get arrays of nameservers in the ns[]
         if (indexed_array[n['name']] && !Array.isArray(indexed_array[n['name']]))
             indexed_array[n['name']] = [indexed_array[n['name']]];
         if (indexed_array[n['name']] && Array.isArray(indexed_array[n['name']]))
@@ -22,9 +23,11 @@ function getFormData($form) {
 
 // This function will be called when the page has finished loading.
 $(document).ready(function () {
+    // Initialise our api handler to the REST API
     ApiHandler.apiUrl =  "https://api.dnshealth.eu/v1";
     ApiHandler.token = false;
     ApiHandler.init();
+
     let checker = new DNSChecker(null);
 
     $("#dnscheck").submit(function (e) {
@@ -42,10 +45,7 @@ $(document).ready(function () {
 
 class ApiHandler {
 
-    constructor() {
-        this.apiUrl;
-        this.token;
-    }
+    constructor() {}
 
     static init() {
         if (!this.token) {
@@ -73,13 +73,22 @@ class ApiHandler {
             contentType: 'application/json',
             data: (params != null) ? JSON.stringify(params) : null,
             success: function (d) {
+                $("#error-block").hide();
                 // If request was successful, call the function given as an argument.
                 callback(d);
             },
             error: function (d) {
                 // If we got an error back, print error to developer console in browser..
                 console.log("Error occurred during request");
-                console.log(d);
+                console.log(d.responseJSON);
+                // Also, print response code and a detailed message to the browser.
+                $("#error-code").html(d.status);
+                if (d.responseJSON.errorDesc) {
+                    $("#error-code").html(d.responseJSON.errorDesc);
+                } else if (d.responseJSON.detail) {
+                    $("#error-message").html(d.responseJSON.detail);
+                }
+                $("#error-block").show();
             }
         })
     }

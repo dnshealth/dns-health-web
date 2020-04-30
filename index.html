@@ -55,6 +55,15 @@
 </script>
 
 <div>
+    <!-- An error message block which is hidden by default -->
+    <div role="alert" id="error-block" class="hidden">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+            Error occurred
+        </div>
+        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <p>Response code: <span class="font-bold" id="error-code"></span>. Message: <span id="error-message"></span></p>
+        </div>
+    </div>
     <!-- -->
     <!-- Three columns -->
     <!-- Domain input field start -->
