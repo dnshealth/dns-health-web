@@ -89,7 +89,7 @@ class ApiHandler {
                 // Also, print response code and a detailed message to the browser.
                 $("#error-code").html(d.status);
                 if (d.responseJSON.errorDesc) {
-                    $("#error-code").html(d.responseJSON.errorDesc);
+                    $("#error-message").html(d.responseJSON.errorDesc);
                 } else if (d.responseJSON.detail) {
                     $("#error-message").html(d.responseJSON.detail);
                 }
