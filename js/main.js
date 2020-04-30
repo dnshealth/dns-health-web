@@ -1,9 +1,9 @@
 // A helper function
-function getFormData($form){
+function getFormData($form) {
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
 
-    $.map(unindexed_array, function(n, i){
+    $.map(unindexed_array, function (n, i) {
         // If key already exists, then make the key contain an array where we push the second element.
         // This will allow us to get arrays of nameservers in the ns[]
         if (!n['value'])
@@ -21,11 +21,13 @@ function getFormData($form){
 }
 
 // This function will be called when the page has finished loading.
-$(document).ready(function() {
+$(document).ready(function () {
+    ApiHandler.apiUrl =  "https://api.dnshealth.eu/v1";
+    ApiHandler.token = false;
     ApiHandler.init();
     let checker = new DNSChecker(null);
 
-    $("#dnscheck").submit(function(e) {
+    $("#dnscheck").submit(function (e) {
         e.preventDefault();
         var data = getFormData($(this));
 
@@ -39,10 +41,11 @@ $(document).ready(function() {
 });
 
 class ApiHandler {
-    static apiUrl = "https://api.dnshealth.eu/v1";
-    static token = false;
 
-    constructor() {}
+    constructor() {
+        this.apiUrl;
+        this.token;
+    }
 
     static init() {
         if (!this.token) {
@@ -51,7 +54,7 @@ class ApiHandler {
                 "GET",
                 "/auth",
                 null,
-                function(data) {
+                function (data) {
                     if (data != null) {
                         ApiHandler.token = data.token;
                     }
@@ -73,7 +76,7 @@ class ApiHandler {
                 // If request was successful, call the function given as an argument.
                 callback(d);
             },
-            error: function(d) {
+            error: function (d) {
                 // If we got an error back, print error to developer console in browser..
                 console.log("Error occurred during request");
                 console.log(d);
