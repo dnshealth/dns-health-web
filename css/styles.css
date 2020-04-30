@@ -3,8 +3,57 @@
 @import "tailwindcss/utilities";
 @import "../assets/terminal/terminal.css";
 @import "terminal.css";
-.bg-gray-463F3A {
-    background-color: #463F3A;
+
+.centerlist {
+    vertical-align: middle;
+    border-style: none;
+    float: middle;
+}
+
+img {
+    display: inline-block;
+    vertical-align: right;
+}
+
+/*.leftlist {
+    float: left;
+    width: 49%;
+    padding-left: 25px;
+    background-color: #FFFFFF;
+}
+
+.rightlist {
+    width: 49%;
+    float: right;
+    background-color: #FFFFFF;
+    padding-left: 25px;
+}*/
+
+div.faq {
+    background-color: rgba(205, 202, 202, 0.53);
+    border-radius: 25px;
+}
+
+h1 {
+    font-weight: bold;
+    vertical-align: left;
+    float: middle;
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    vertical-align: left;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.bg-gray-363537 {
+    background-color: #363537;
 }
 
 .bg-gray-8A817C {
@@ -22,12 +71,15 @@
 #footer {
     text-align: center;
     color: white;
-    background-color: #463F3A;
+    background-color: #363537;
     position: absolute;
     display: inline-block;
     bottom: 1rem;
     width: 100%;
-    height: 3rem;
+    height: 2rem;
+    left: 0;
+    bottom: 0;
+    position: fixed;
     /* Footer height */
 }
 
@@ -39,27 +91,6 @@ body {
 nav {
     width: 100%;
     background: #463F3A;
-}
-
-ul {
-    width: 80%;
-    padding: 0;
-    margin-left: 25px;
-}
-
-ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 15px;
-}
-
-ul li:hover {
-    background: #8A817C;
-}
-
-ul li a {
-    color: #fff;
-    text-decoration: none;
 }
 
 .toggle {
@@ -81,25 +112,44 @@ ul li a {
 .logo {
     display: flex;
     margin-top: 10px;
+    position:sticky;
+}
+
+.show-hide {
+    padding: 8px;
+}
+
+#information {
+    padding: 10px 20px;
+    text-align: left;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 30px;
 }
 
 @media (max-width: 768px) {
-    .toggle {
-        display: block;
+    .show-hide {
+        display: inline-block;
     }
-    ul {
+    #information {
         width: 100%;
-        display: none;
+        padding: 10px 20px;
+        text-align: left;
+        box-sizing: border-box;
+        color: #fff;
+        font-size: 30px;
     }
-    ul li {
+    .information.toggle {
         display: block;
     }
     .active {
         display: block;
     }
+
     .logo {
         width: 100%;
         display: flex;
         margin-top: 15px;
     }
 }
+

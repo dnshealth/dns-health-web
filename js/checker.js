@@ -17,35 +17,49 @@ class DNSChecker {
                 startDelay: 500,
                 lineData: []
             });
-        $("#terminal").show();
         this.resultsTable = table;
     }
 
     async start(domain, ns) {
-        // Print the command to terminal.
-        this.terminal.addLines(
-            [
-                { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
-            ]
-        );
-        // When the checker is started, we want to print our pending checks to the terminal and the results table.
-        // First, get the checks from getChecks, and map them so that each check also contains a class and appropriate text value.
-        var data = DNSChecker.getChecks().map(check => {
-            check["class"] = "white";
-            check["value"] = `<span class="loading">PENDING</span> - ${check["description"] || ''}`;
-            return check;
-        });
-        // So at this point data is an array of objects like {id: 1, description: "Valid hostnames", class: "check-pending", value: "PENDING - Valid hostnames"}
-        // Then we add the checks to the terminal. They will be listed like PENDING - Valid hostnames in WHITE text.
-        await this.terminal.addChecks(data);
-        // TODO add save stuff to table instead if terminal view is disabled...
-        // Then, call an appropriate method to actually initiate the checks.
-        this.showResults();
+        if ($('input#terminal-view').is(':checked')) {
+            $("#terminal").html('');
+            $("#terminal").show();
+            // Print the command to terminal.
+            this.terminal.addLines(
+                [
+                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
+                ]
+            );
+            // When the checker is started, we want to print our pending checks to the terminal and the results table.
+            // First, get the checks from getChecks, and map them so that each check also contains a class and appropriate text value.
+            var data = DNSChecker.getChecks().map(check => {
+                check["class"] = "white";
+                check["value"] = `<span class="loading">PENDING</span> - ${check["description"] || ''}`;
+                return check;
+            });
+            // So at this point data is an array of objects like {id: 1, description: "Valid hostnames", class: "check-pending", value: "PENDING - Valid hostnames"}
+            // Then we add the checks to the terminal. They will be listed like PENDING - Valid hostnames in WHITE text.
+            await this.terminal.addChecks(data);
+            // TODO add save stuff to table instead if terminal view is disabled...
+            // Then, call an appropriate method to actually initiate the checks.
+            var result = ApiHandler.request(
+                "POST",
+                "/check",
+                {"domain": domain, "nameservers": ns},
+                function (result) {
+                    // When the response has been received, this will run.
+                    DNSChecker.showResults(result.checks);
+                }
+            );
+        } else {
+            $("#terminal").hide();
+            // TODO show results table
+        }
     }
 
-    async showResults(results) {
+    static showResults(results) {
         // Before showing the results, they need to first be filled in...
-        // Dummy input
+        /* Dummy input
         var results = [
             {"id": 0, "result": false},
             {"id": 1, "result": false},
@@ -59,7 +73,7 @@ class DNSChecker {
             {"id": 9, "result": false},
             {"id": 10, "result": false},
             {"id": 11, "result": false}
-        ];
+        ];*/
         var checks = DNSChecker.getChecks();
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);

@@ -6,8 +6,8 @@ $(document).ready(function() {
         if(counter < max_fields_limit){ //check conditions
             counter++; //counter increment
             $('.input_fields_container_part').append('<div>' +
-                '<input type="text" name="tags" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>' +
-                '<a href="#" class="remove_field" style="margin-left:10px;">Remove</a>' +
+                '<a tabindex="-1" href="#" class="remove_field" style="float: right">&#10060;</a>' +
+                '<input type="text" name="ns[]" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>' +
                 '</div>'); //add input field
         }
     });

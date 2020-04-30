@@ -1,3 +1,5 @@
 #terminal {
     display: none;
+    min-height: 800px;
+    overflow-y: auto;
 }

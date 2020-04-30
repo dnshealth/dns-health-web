@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DNS Health</title>
+    <link rel="stylesheet" href="css/styles.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<nav class="flex items-center justify-between flex-wrap bg-gray-363537 p-2">
+    <div class="flex items-center flex-shrink-0 text-white mr-4">
+        <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+        </svg>
+        <span class="font-semibold text-2xl tracking-tight">DNS Health</span>
+    </div>
+    <div class="show-hide block lg:hidden">
+        <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
+            <svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg"><title>
+                Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/>
+            </svg>
+        </button>
+    </div>
+
+    <div id="information" class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block ">
+        <div id="nav_bar" class="text-sm lg:flex-grow">
+            <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4">
+                Home
+            </a>
+            <a href="faq.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
+                FAQ
+            </a>
+            <a href="about.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
+                About
+            </a>
+        </div>
+    </div>
+
+</nav>
+
+
+<h1 class="text-center">About</h1>
+<div class="flex justify-center my-8">
+    <div class="w-10/12">
+        <p class="text-justify">DNSHealth is a tool designed to verify the compliance of a DNS server and a
+            DNS zone contained within to the specifications specified in the IANA nameserver technical
+            standard.
+            The tool will check if the zone for a domain name has been correctly set up at the specified
+            nameservers.
+            Based on this information, the user can determine if a domain is ready to be delegated to those
+            nameservers.
+            The tool is planned to have a web interface for anyone to use as well as an REST API.
+        </p><br>
+        <p class="text-justify">
+            It's very useful if you have purchased a domain name and wish to take it into use by pointing it
+            to nameservers.
+            Using the tool you can see if the nameservers are working correctly.
+        </p><br>
+        <p class="text-justify">
+            This is a project from KTH to make a DNSchecker for NordName. NordName plans to use the tool to
+            check the technical
+            compliance of the nameservers when a customer wants to change the nameservers on a domain.
+            The command line tool can already be used for this purpose as it can output results in JSON
+            format,
+            which can be read by another program.
+        </p><br>
+        <p class="text-justify">
+            We can be contacted by sending an email to [insert email] for any questions about DNSHealth.
+        </p>
+    </div>
+</div>
+<h2 class="text-center">The Team</h2>
+<div class="flex justify-center">
+    <table id="team">
+        <tbody>
+            <tr>
+                <td>
+                    Hristo Georgiev
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Rudolfs Arvids Kalnins
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Azad Mustafa
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kasper Oikarinen
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Björn Ribenius Ågren
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Konstantinos Xyderos
+                </td>
+                <td>
+                    <a href="#">
+                        <img src=assets/images/linkedin.png
+                             width="20"
+                             height="20"/>
+                    </a>
+                    <a href="#"><img src=assets/images/githubicon.png
+                                     width="20"
+                                     height="20"/>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
