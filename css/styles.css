@@ -3,30 +3,68 @@
 @import "tailwindcss/utilities";
 @import "../assets/terminal/terminal.css";
 @import "terminal.css";
-
 .centerlist {
     vertical-align: middle;
     border-style: none;
+    float: middle;
+  }
+  img {
+      display:inline-block;
+      vertical-align: right;
   }
 
-  h1 {
+  .leftlist {
+      vertical-align: left;
+      float: left;
+      width: 49%;
+      padding-left: 25px;
+      //background-color: #FFAE00;
+      background-color: #FFFFFF;
+  }
+  .rightlist {
+      width: 49%;
+      float: right;
+      //background-color: #FFAE00;
+      background-color: #FFFFFF;
+      padding-left: 25px;
+  }
+  
+table {
+    float: center;
+}
+h1 {
     font-weight:bold;
     vertical-align: left;
     float: middle;
     font-size: 48px;
 }
 
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    vertical-align: left;
+
+}
+
   .faqh {
     font-weight: bold;
-    font-size: 24px;
-    vertical-align: left;
-    float: left;
-
+    font-size: 16px;
+    
+   
   }
   .faqc {
-    vertical-align: left;
+    //color: #8A817C;
+    color:	#646464;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .aboc{
+    vertical-align:middle;
     color: #8A817C;
-    float: left;
+    text-align: justify;
+    text-justify: inter-word;
+    width : 20%;
   }
 
 .bg-gray-463F3A {
@@ -45,31 +83,21 @@
     background-color: #E0AFA0;
 }
 
-#nav_bar a.active-page {
-    background-color: ;
-}
-
 #footer {
     text-align: center;
     color: white;
     background-color: #463F3A;
+    position: absolute;
     display: inline-block;
+    bottom: 1rem;
     width: 100%;
     height: 3rem;
-    margin-top: auto;
     /* Footer height */
-}
-
-html {
-    height: 100%;
 }
 
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    display:flex;
-    flex-direction:column;
 }
 
 nav {
@@ -117,7 +145,6 @@ ul li a {
 .logo {
     display: flex;
     margin-top: 10px;
-    position: sticky;
 }
 
 @media (max-width: 768px) {
@@ -140,3 +167,4 @@ ul li a {
         margin-top: 15px;
     }
 }
+
