@@ -54,8 +54,42 @@ class DNSChecker {
         } else {
             $("#terminal").hide();
             // TODO show results table
+            $("#table-main").show();
+            var result = ApiHandler.request(
+                "POST",
+                "/check",
+                {"domain": domain, "nameservers": ns},
+                function (result) {
+                    // When the response has been received, this will run.
+                    DNSChecker.showResultsTable(result.checks);
+                }
+            );
         }
     }
+
+    static showResultsTable(results){
+        var checks = DNSChecker.getChecks();
+        for (let i in results) {
+            var s = document.getElementById(`c${results[i]["id"]}`);
+            if (results[i]["result"]) {
+                // If this particular check passed, show the check as passed.
+                // Set span class to green show that it is shown as green.
+                $('#table-view').append('<tr  class="bg-gray-100">' +
+                    '<td class="border px-4 py-2">' + checks[i]["description"] + '</td>' +
+                    '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
+                    '</tr>');
+                console.log("Fail statement")
+
+            } else {
+                $('#table-view').append('<tr  class="bg-gray-100">' +
+                    '<td class="border px-4 py-2">' + checks[i]["description"] + '</td>' +
+                    '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
+                    '</tr>');
+                console.log("Fail statement")
+            }
+        }
+    }
+
 
     static showResults(results) {
         // Before showing the results, they need to first be filled in...
