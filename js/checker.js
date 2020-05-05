@@ -51,6 +51,7 @@ class DNSChecker {
                  "delegation": function(){
 
                      if($('input#delegated-domain').is(':checked')){
+                         
                         return true;
 
                      }else
