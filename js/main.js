@@ -37,7 +37,8 @@ $(document).ready(function () {
 
     $("#dnscheck").submit(function (e) {
         e.preventDefault();
-        var data = getFormData($(this));
+        const data = getFormData($(this));
+        console.log(data);
 
         // If we only have one nameserver, we still want it to have in an array for the backend
         if (!Array.isArray(data["ns[]"])) {
