@@ -1,6 +1,7 @@
 // A helper function
 function getFormData($form) {
     var unindexed_array = $form.serializeArray();
+    console.log(unindexed_array);
     var indexed_array = {};
 
     $.map(unindexed_array, function (n, i) {
