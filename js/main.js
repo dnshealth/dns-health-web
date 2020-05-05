@@ -1,7 +1,6 @@
 // A helper function
 function getFormData($form) {
     var unindexed_array = $form.serializeArray();
-    console.log(unindexed_array);
     var indexed_array = {};
 
     $.map(unindexed_array, function (n, i) {
@@ -32,6 +31,7 @@ $(document).ready(function () {
     // Initialise our api handler to the REST API
     ApiHandler.apiUrl =  "https://api.dnshealth.eu/v1";
     ApiHandler.token = false;
+    ApiHandler.captcha = false;
     ApiHandler.init();
 
     let checker = new DNSChecker(null);
@@ -39,8 +39,8 @@ $(document).ready(function () {
     $("#dnscheck").submit(function (e) {
         e.preventDefault();
         const data = getFormData($(this));
-        console.log(data);
 
+        ApiHandler.captcha = data["g-recaptcha-response"];
         // If we only have one nameserver, we still want it to have in an array for the backend
         if (!Array.isArray(data["ns[]"])) {
             data["ns[]"] = [data["ns[]"]];
@@ -67,11 +67,14 @@ class ApiHandler {
                     }
                 });
         }
+
     }
 
     static request(type, path, params, callback) {
-        if (this.token)
+        if (this.token && this.captcha && params != null){
             params["token"] = this.token;
+            params["g-recaptcha-response"] = this.captcha;
+        }
 
         $.ajax({
             method: type,
