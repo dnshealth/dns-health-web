@@ -46,7 +46,20 @@ class DNSChecker {
             var result = ApiHandler.request(
                 "POST",
                 "/check",
-                {"domain": domain, "nameservers": ns},
+                {"domain": domain,
+                 "nameservers": ns,
+                 "delegation": function(){
+
+                     if($('input#delegated-domain').is(':checked')){
+                         
+                        return true;
+
+                     }else
+
+                        return false;
+
+                    }()
+                },
                 function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(result.checks);
@@ -59,7 +72,20 @@ class DNSChecker {
             var result = ApiHandler.request(
                 "POST",
                 "/check",
-                {"domain": domain, "nameservers": ns},
+                {"domain": domain,
+                "nameservers": ns,
+                "delegation": function(){
+
+                    if($('input#delegated-domain').is(':checked')){
+
+                        return true;
+
+                    }else
+
+                       return false;
+
+                   }()
+                },
                 function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
