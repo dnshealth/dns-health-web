@@ -41,6 +41,7 @@ $(document).ready(function () {
         const data = getFormData($(this));
 
         ApiHandler.captcha = data["g-recaptcha-response"];
+        grecaptcha.reset();
         // If we only have one nameserver, we still want it to have in an array for the backend
         if (!Array.isArray(data["ns[]"])) {
             data["ns[]"] = [data["ns[]"]];
