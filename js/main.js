@@ -73,7 +73,7 @@ class ApiHandler {
     static request(type, path, params, callback) {
         if (this.token && this.captcha && params != null){
             params["token"] = this.token;
-            params["g-recaptcha-response"] = this.captcha;
+            params["recaptcha_response"] = this.captcha;
         }
 
         $.ajax({
