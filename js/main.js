@@ -31,14 +31,17 @@ $(document).ready(function () {
     // Initialise our api handler to the REST API
     ApiHandler.apiUrl =  "https://api.dnshealth.eu/v1";
     ApiHandler.token = false;
+    ApiHandler.captcha = false;
     ApiHandler.init();
 
     let checker = new DNSChecker(null);
 
     $("#dnscheck").submit(function (e) {
         e.preventDefault();
-        var data = getFormData($(this));
+        const data = getFormData($(this));
 
+        ApiHandler.captcha = data["g-recaptcha-response"];
+        grecaptcha.reset();
         // If we only have one nameserver, we still want it to have in an array for the backend
         if (!Array.isArray(data["ns[]"])) {
             data["ns[]"] = [data["ns[]"]];
@@ -65,11 +68,14 @@ class ApiHandler {
                     }
                 });
         }
+
     }
 
     static request(type, path, params, callback) {
-        if (this.token)
+        if (this.token && this.captcha && params != null){
             params["token"] = this.token;
+            params["recaptcha_response"] = this.captcha;
+        }
 
         $.ajax({
             method: type,
