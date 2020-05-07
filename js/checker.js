@@ -49,7 +49,6 @@ class DNSChecker {
         } else {
             $("#terminal").hide();
             $("#table-view").html('');
-            $("#table-main").show();
             var result = ApiHandler.request(
                 "POST",
                 "/check",
@@ -61,6 +60,7 @@ class DNSChecker {
                 function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
+                    $("#table-main").show();
                 }
             );
         }
