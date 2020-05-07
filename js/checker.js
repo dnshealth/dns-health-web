@@ -130,5 +130,25 @@ class DNSChecker {
                 s.innerHTML = `FAILED - ${results[i]["description"] || ''}`;
             }
         }
+
     }
+
+    static getChecks() {
+        // This is a "storage" function where we store the checks we wish to run, their descriptions, IDs, and so on.
+        return [
+            {id: 0, description: "Minimum number of nameservers"},
+            {id: 1, description: "Valid hostnames"},
+            {id: 2, description: "Name server reachability"},
+            {id: 3, description: "Answer authoritatively"},
+            {id: 4, description: "Network diversity"},
+            {id: 5, description: "Consistency between glue and authoritative data"},
+            {id: 6, description: "Consistency between delegation and zone"},
+            {id: 7, description: "Consistency between authoritative name servers"},
+            {id: 8, description: "No truncation of referrals"},
+            {id: 9, description: "Prohibited networks"},
+            {id: 10, description: "No open recursive name service"},
+            {id: 11, description: "Same source address"},
+        ];
+    }
+
 }
