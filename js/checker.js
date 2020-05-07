@@ -95,80 +95,40 @@ class DNSChecker {
     }
 
     static showResultsTable(results){
-        var checks = DNSChecker.getChecks();
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
                 $('#table-view').append('<tr  class="bg-gray-100">' +
-                    '<td class="border px-4 py-2">' + checks[i]["description"] + '</td>' +
+                    '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
-                console.log("Fail statement")
 
             } else {
                 $('#table-view').append('<tr  class="bg-gray-100">' +
-                    '<td class="border px-4 py-2">' + checks[i]["description"] + '</td>' +
+                    '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
                     '</tr>');
-                console.log("Fail statement")
             }
         }
     }
 
 
     static showResults(results) {
-        // Before showing the results, they need to first be filled in...
-        /* Dummy input
-        var results = [
-            {"id": 0, "result": false},
-            {"id": 1, "result": false},
-            {"id": 2, "result": true},
-            {"id": 3, "result": false},
-            {"id": 4, "result": false},
-            {"id": 5, "result": false},
-            {"id": 6, "result": false},
-            {"id": 7, "result": false},
-            {"id": 8, "result": false},
-            {"id": 9, "result": false},
-            {"id": 10, "result": false},
-            {"id": 11, "result": false}
-        ];*/
-        var checks = DNSChecker.getChecks();
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
                 s.classList = ["green"];
-                s.innerHTML = `PASS - ${checks[i]["description"] || ''}`;
+                s.innerHTML = `PASS - ${results[i]["description"] || ''}`;
             } else {
                 // If this particular check failed, show the check as failed.
                 // TODO Show more detailed error message too!
                 s.classList = ["red"];
-                s.innerHTML = `FAILED - ${checks[i]["description"] || ''}`;
+                s.innerHTML = `FAILED - ${results[i]["description"] || ''}`;
             }
         }
-
     }
-
-    static getChecks() {
-        // This is a "storage" function where we store the checks we wish to run, their descriptions, IDs, and so on.
-        return [
-            {id: 0, description: "Minimum number of nameservers"},
-            {id: 1, description: "Valid hostnames"},
-            {id: 2, description: "Name server reachability"},
-            {id: 3, description: "Answer authoritatively"},
-            {id: 4, description: "Network diversity"},
-            {id: 5, description: "Consistency between glue and authoritative data"},
-            {id: 6, description: "Consistency between delegation and zone"},
-            {id: 7, description: "Consistency between authoritative name servers"},
-            {id: 8, description: "No truncation of referrals"},
-            {id: 9, description: "Prohibited networks"},
-            {id: 10, description: "No open recursive name service"},
-            {id: 11, description: "Same source address"},
-        ];
-    }
-
 }

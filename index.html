@@ -7,7 +7,7 @@
 
     <title>DNS Health</title>
     <link rel="stylesheet" href="css/styles.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
 </head>
 
 <body>
@@ -76,6 +76,10 @@
                                     <input class="mr-2 leading-tight" type="checkbox" id="terminal-view"/>
                                     <span class="text-sm">
                                         Terminal View
+                                        <span class="tooltip">
+                                            <i class="fa fa-info"></i>
+                                            <span class="tooltip-text">Enabling this will show the results in a terminal view instead of a table.</span>
+                                        </span>
                                     </span>
                                 </label>
                             </div>
@@ -84,6 +88,10 @@
                                     <input class="mr-2 leading-tight" type="checkbox" id="delegated-domain"/>
                                     <span class="text-sm">
                                         Delegated domain
+                                        <span class="tooltip">
+                                            <i class="fa fa-info"></i>
+                                            <span class="tooltip-text">Enabling this will run the checks toward the current nameservers of the domain.</span>
+                                        </span>
                                     </span>
                                 </label>
                             </div>
@@ -98,12 +106,12 @@
                             </div>
                         </div>
                         <!-- NS server input field START -->
-                        <label class="block text-sm font-bold mb-2" for="ns1">
+                        <label class="block text-sm font-bold mb-2 ns-group" for="ns1">
                             NS Servers
                         </label>
 
                         <input id="ns1" type="text" placeholder="" name="ns[]"
-                               class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
+                               class="ns-group bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
                         <!-- NS server input END  -->
 
 
@@ -113,7 +121,7 @@
                 </div>
                 <div class="g-recaptcha" data-sitekey="6LeVyPIUAAAAAJQk1fDNEI9MDQDzIpRAcN2AEkxJ"></div>
                 <!-- Add more NS serve input fields -->
-                <div>
+                <div class="ns-group">
                     <button style="margin-top: 10px; float: right; background: #2fbf71"
                             class="hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full add_more_button">
                         Add More NS servers
