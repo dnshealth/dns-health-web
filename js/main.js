@@ -81,10 +81,10 @@ class ApiHandler {
     }
 
     static request(type, path, params, callback) {
-        if (this.token && this.captcha && params != null){
+        if (this.token)
             params["token"] = this.token;
+        if (this.captcha)
             params["recaptcha_response"] = this.captcha;
-        }
 
         $.ajax({
             method: type,
