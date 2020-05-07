@@ -49,6 +49,15 @@ $(document).ready(function () {
 
         checker.start(data["domain"], data["ns[]"]);
     });
+
+    // A hook on the "delegated domain" checkbox to make it hide the NS fields if checked.
+    $("#delegated-domain").change(function () {
+        if (this.checked) {
+            $(".ns-group").hide();
+        } else {
+            $(".ns-group").show();
+        }
+    });
 });
 
 class ApiHandler {
@@ -72,10 +81,10 @@ class ApiHandler {
     }
 
     static request(type, path, params, callback) {
-        if (this.token && this.captcha && params != null){
+        if (this.token)
             params["token"] = this.token;
+        if (this.captcha)
             params["recaptcha_response"] = this.captcha;
-        }
 
         $.ajax({
             method: type,
