@@ -84,26 +84,24 @@ class DNSChecker {
                     '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILED</button></td>' +
                     '</tr>');
 
-                    $('#ex2').append('<div role="document">' +
-                    '<div class="modal-content">' +
-                    '<div class="modal-header">' +
-                    '<h2 class="modal-title" id="popupModal" style="text-align: center">' + results[i]["description"] + '</h2>' +
-                    '</div>' +
-                    '<div class="modal-body justify-center">' +
-                    '<p id="ip-egg"></p>' +
-                    '<p>'+ results[i]["details"]+'</p>' +
-                    '</div>' +
-                    '<div class="modal-footer">' +
-                    '<button  type="button" tabindex="-1" class="remove_field_modal2 close" data-dismiss="modal" style="float: right">&#10060;</button>' +
-                    '</div>' +
-                    '</div>');
-        
+                $('#ex2').append(
+                    ' <div class="px-6 py-4">' +
+                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>\n' +
+                    ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
+                    ' </div>' +
+                    ' <div class="px-6 py-4">' +
+                    '<!-- Using utilities: -->\n' +
+                    '<button class=" .remove_field_modal2 bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
+                    '  CLOSE ' +
+                    '</button>' +
+                    ' </div>'
+                );
             }
         }
-        
+
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
-            $(this).parent().parent().parent().parent().hide()
+            $(this).parent().parent().hide()
 
         });
     }
