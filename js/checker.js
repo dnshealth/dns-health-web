@@ -42,7 +42,7 @@ class DNSChecker {
                 function(result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(terminal, result.checks);
-                    console.log(result.ns);
+
 
                     DNSChecker.requestedNameserver(result.ns);
 
@@ -51,6 +51,7 @@ class DNSChecker {
         } else {
             $("#terminal").hide();
             $("#table-view").html('');
+
             var result = ApiHandler.request(
                 "POST",
                 "/check", {
@@ -61,7 +62,6 @@ class DNSChecker {
                 function(result) {
 
                     DNSChecker.requestedNameserver(result.ns);
-
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
                     $("#table-main").show();
@@ -81,7 +81,7 @@ class DNSChecker {
 
     static showResultsTable(results) {
         for (let i in results) {
-            var s = document.getElementById(`c${results[i]["id"]}`);
+            let s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
@@ -93,10 +93,26 @@ class DNSChecker {
             } else {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
-                    '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
-                    '</tr>');
+                    '<td class="border px-4 py-2" style="background: red">FAILD</td>' +
+                    '</tr>'
+
+                );
+                $('#ex2').append(
+                    ' <div class="px-6 py-4">' +
+                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
+                    ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
+                    ' </div>'
+                );
             }
         }
+        $('#table-main').append('<button id="failBTN" type="button" class="justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-toggle="modal" data-target="#ex2">Show me more details on what failed</button>')
+
+        $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
+            e.preventDefault();
+            $(this).parent().parent().hide()
+
+        });
+
     }
 
     static showResults(terminal, results) {
