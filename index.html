@@ -45,6 +45,8 @@
 </nav>
 
 <div>
+    
+
     <!-- An error message block which is hidden by default -->
     <div role="alert" id="error-block" class="hidden">
         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -134,7 +136,12 @@
                         Check
                     </button>
                 </div>
-
+                <!-- Modal for extra information -->
+                <div style="margin-top: 50px" class="w-full flex justify-center">
+                    <div id="ex2" class="modal fade hidden justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" tabindex="-1"
+                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    </div>
+                </div>
             </form>
             <div id="terminal"></div>
         </div>
@@ -164,6 +171,9 @@
     </p>
     <p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
 </footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="assets/terminal/terminal.js"></script>
 <script type="text/javascript" src="js/checker.js"></script>
