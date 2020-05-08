@@ -46,76 +46,67 @@
 </head>
 
 <body>
-<nav class="flex items-center justify-between flex-wrap bg-gray-363537 p-2">
-	<div class="flex items-center flex-shrink-0 text-white mr-4">
-		<svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
-		     xmlns="http://www.w3.org/2000/svg">
-			<path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
-		</svg>
-		<span class="font-semibold text-2xl tracking-tight">DNS Health</span>
-	</div>
-	<div class="show-hide block lg:hidden">
-		<button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
-			<svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg"><title>
-				Menu</title>
-				<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/>
-			</svg>
-		</button>
-	</div>
-	
-	<div id="information" class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block ">
-		<div id="nav_bar" class="text-sm lg:flex-grow">
-			<a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4">
-				Home
-			</a>
-			<a href="faq.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
-				FAQ
-			</a>
-			<a href="about.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:text-white mr-4 ">
-				About
-			</a>
-		</div>
-	</div>
+    <nav class="flex items-center justify-between flex-wrap bg-gray-363537">
+        <div class="flex items-center flex-shrink-0 text-white mx-4">
+            <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+        </svg>
+            <span class="font-semibold text-2xl tracking-tight">DNS Health</span>
+        </div>
+        <div class="show-hide block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
+            <svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg"><title>
+                Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/>
+            </svg>
+        </button>
+        </div>
 
+        <div id="information" class="w-full flex-grow mb-4 lg:mb-0 lg:flex lg:items-center lg:w-auto lg:block hidden">
+            <div id="nav_bar" class="text-sm lg:flex-grow">
+                <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+                Home
+            </a>
+                <a href="faq.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+                FAQ
+            </a>
+                <a href="about.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+                About
+            </a>
+            </div>
+        </div>
     </nav>
 
-<div>
-	<!-- Modal -->
-	<div style="margin-top: 50px" class="w-full flex justify-center">
-		<div id="ex1" class="modal fade justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" tabindex="-1"
-		     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		</div>
-	</div>
-	<!-- An error message block which is hidden by default -->
-	<div role="alert" id="error-block" class="hidden">
-		<div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-			Error occurred
-		</div>
-		<div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-			<p>Response code: <span class="font-bold" id="error-code"></span>. Message: <span id="error-message"></span>
-			</p>
-		</div>
-	</div>
-	<!-- -->
-	<!-- Three columns -->
-	<!-- Domain input field start -->
-	<div style="margin-top: 50px" class="w-full flex justify-center">
-		<div class="w-1/2">
-			<form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-				<div class="input_fields_container_part">
-					<div>
-						<label class="block text-sm font-bold mb-2" for="domain">
-							Domain
-						</label>
-						<input id="domain" name="domain" type="text" placeholder="Your Domain Here"
-						       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-						<!-- Domain input field end -->
-						<!-- Check Boxes Start -->
-						<div class="flex mb-4" style="margin-top: 10px">
-							<div class="w-1/2 h-12">
-								<label class="md:w-2/3 block text-gray-500 font-bold">
-									<input class="mr-2 leading-tight" type="checkbox" id="terminal-view"/>
-									<span class="text-sm">
+    <div>
+        <!-- An error message block which is hidden by default -->
+        <div role="alert" id="error-block" class="hidden">
+            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                Error occurred
+            </div>
+            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <p>Response code: <span class="font-bold" id="error-code"></span>. Message: <span id="error-message"></span>
+                </p>
+            </div>
+        </div>
+        <!-- -->
+        <!-- Three columns -->
+        <!-- Domain input field start -->
+        <div style="margin-top: 15px" class="w-full flex justify-center">
+            <div class="w-full md:w-3/4 lg:w-1/2">
+                <form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="input_fields_container_part">
+                        <div>
+                            <label class="block text-sm font-bold mb-2" for="domain">
+                            Domain
+                        </label>
+                            <input id="domain" name="domain" type="text" placeholder="Your Domain Here" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+                            <!-- Domain input field end -->
+                            <!-- Check Boxes Start -->
+                            <div class="flex flex-wrap mb-4" style="margin-top: 10px">
+                                <div class="w-full md:w-1/2">
+                                    <label class="block text-gray-500 font-bold">
+                                    <input class="mr-2 leading-tight" type="checkbox" id="terminal-view"/>
+                                    <span class="text-sm">
                                         Terminal View
                                         <span class="tooltip">
                                             <i class="fa fa-info"></i>
@@ -194,33 +185,65 @@
 	</div>
 </div>
 
+                            <!-- Display the value taken from domain - just for testing	-->
+                            <p id="demo"></p>
+                        </div>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LeVyPIUAAAAAJQk1fDNEI9MDQDzIpRAcN2AEkxJ"></div>
+                    <!-- Add more NS serve input fields -->
+                    <div class="ns-group">
+                        <button style="margin-top: 10px; float: right; background: #0a4786" type="button" class="w-full md:w-auto text-white font-bold py-2 px-4 rounded-full add_more_button">
+                        Add More NS servers
+                    </button>
+                    </div>
+                    <!-- Submit / run This button should trigger the terminal view if the checkbox is marked -->
+                    <div>
+                        <button style="margin-top: 10px; background: #2fbf71" type="submit" form="dnscheck" class="w-full md:w-auto text-center text-gray-800 font-bold py-2 px-4 rounded">
+                        Check
+                    </button>
+                    </div>
+                </form>
 
-</div>
-<footer id="footer">
-	<p>
-		Copyright &copy;
-		<script type="text/javascript">
-            var d = new Date()
-            document.write(d.getFullYear())
-        </script>
-        <a target="_blank" href="https://project.dnshealth.eu/">DNS Health</a>
-    </p>
-    <p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
-</footer>
-<!-- Remember to include jQuery :) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+                <div id="nameservers" class="hidden" style="text-align: center;">
+                    <span class="font-bold">Nameservers:</span>
+                    <ul id="ns-list"></ul>
+                </div>
+                <div id="terminal"></div>
+            </div>
+        </div>
 
-<!-- jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-<script type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="assets/terminal/terminal.js"></script>
-<script type="text/javascript" src="js/checker.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script src="js/addBtn.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+        <!-- List View Table -->
+        <div class="w-full flex justify-center">
+            <table id="table-main" class="table-auto hidden" style="margin-bottom: 10px">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">Description</th>
+                        <th class="px-4 py-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="table-view"></tbody>
+            </table>
+        </div>
+    </div>
 
+    <footer id="footer">
+        <p>
+            Copyright &copy;
+            <script type="text/javascript">
+                var d = new Date()
+                document.write(d.getFullYear())
+            </script>
+            <a target="_blank" href="https://project.dnshealth.eu/">DNS Health</a>
+        </p>
+        <p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
+    </footer>
+
+    <script type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
+    <script type="text/javascript" src="assets/terminal/terminal.js"></script>
+    <script type="text/javascript" src="js/checker.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/addBtn.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
