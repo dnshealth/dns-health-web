@@ -85,12 +85,12 @@ class DNSChecker {
                     '</tr>');
                 $('#ex2').append(
                     ' <div class="px-6 py-4">' +
-                    ' <div class="font-bold text-xl mb-2">' + results[0]["description"] + '</div>\n' +
-                    ' <p class="text-gray-700 text-base">' + results[0]["description"] + ' </p>' +
+                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>\n' +
+                    ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
                     ' </div>' +
                     ' <div class="px-6 py-4">' +
                     '<!-- Using utilities: -->\n' +
-                    '<button class="bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
+                    '<button class="remove_field_modal2 bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
                     '  CLOSE ' +
                     '</button>' +
                     ' </div>'
@@ -100,9 +100,9 @@ class DNSChecker {
 
 
 
-        $('#ex2').on("click", ".remove_field_modal", function (e) { //user click on remove text links
+        $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
-            $(this).parent().parent().parent().parent().remove()
+            $(this).parent().parent().hide()
 
         });
     }
