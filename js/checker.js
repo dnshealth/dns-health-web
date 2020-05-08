@@ -57,7 +57,7 @@ class DNSChecker {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
-                    },
+                },
                 function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
@@ -66,7 +66,7 @@ class DNSChecker {
         }
     }
 
-    static showResultsTable(results){
+    static showResultsTable(results) {
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
@@ -76,14 +76,13 @@ class DNSChecker {
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
-                    //console.log(results[i]["description"])
+                //console.log(results[i]["description"])
             } else {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">' +
-                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILED</button></td>' +
+                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILD</button></td>' +
                     '</tr>');
-
                 $('#ex2').append(
                     ' <div class="px-6 py-4">' +
                     ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>\n' +
@@ -91,13 +90,15 @@ class DNSChecker {
                     ' </div>' +
                     ' <div class="px-6 py-4">' +
                     '<!-- Using utilities: -->\n' +
-                    '<button class=" .remove_field_modal2 bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
+                    '<button class="remove_field_modal2 bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
                     '  CLOSE ' +
                     '</button>' +
                     ' </div>'
                 );
             }
         }
+
+
 
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
