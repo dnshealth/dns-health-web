@@ -68,7 +68,7 @@ class DNSChecker {
 
     static showResultsTable(results) {
         for (let i in results) {
-            var s = document.getElementById(`c${results[i]["id"]}`);
+            let s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
@@ -85,7 +85,7 @@ class DNSChecker {
                     '</tr>');
                 $('#ex2').append(
                     ' <div class="px-6 py-4">' +
-                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>\n' +
+                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
                     ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
                     ' </div>' +
                     ' <div class="px-6 py-4">' +
