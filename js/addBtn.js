@@ -17,11 +17,12 @@ $(document).ready(function () {
             $.get('https://www.cloudflare.com/cdn-cgi/trace', function (data) {
                 let regexp = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/gi;
                 let ip_address = data.match(regexp);
+                console.log(data)
                 document.getElementById('ip-egg').innerHTML = "We have your IP: " + ip_address
             });
 
             // Modal Structure
-            $('#ex1').append('<divd role="document">' +
+            $('#ex1').append('<div role="document">' +
                 '<div class="modal-content">' +
                 '<div class="modal-header">' +
                 '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">OppS!</h2>' +
