@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html>
+<!--
+                         `.-/+++++++++++::-````  ``:oyyyyyys+:::-.`
+                      `:sdmdhyyyyyyyyyyyhhddddddsdmhyysssssyhhhhdmNhs/-``
+                  `:ohmdyssssssssssyyhddddddddddNNdsssssssydmmmddhhhhhddds/`
+               `:ymdyssssssssssshmmdhhysssssyyyyyydNdhssssyysssssssyyyyyyhdmy+-`
+              `dmyssssssssssssssssssssyhdmmmdddddmmdNMmsssssssyhdmmddhhhhddmNNMy.
+            `:mdssssssssssssssssyhdmmmdhyhNmdhysssssshmNhssymmdhysssssssyhmNdyhmd`
+            -NysssssssssssssssssyhyssssssssyhdmNNNmdyssymNhmhssssssssydNNmdyssshm`
+           -mhsssssssssssssssssssssssssssssssssssyhddssssssssssssssssddhyssssssms`
+          /NhsssssssssssssssssssssssssssssssssymNMNdyssssssssssssssssdNMMNhssssmh.
+        `oNyssssssssssssssssssssssssssssssssssNMMMMMmsssssssssssssssyMMMMMNsssssdh`
+       :ddysssssssssssssssssssssssssssssssssssdMMMMNhsssssssssssssssshNMMNhsssssdh`
+     .ymyssssssssssssssssssssssssssssssssssssssyhhhssssssssssssssssssssssssssssdd.
+   `/Nhsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdm.
+  `oNyssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssms
+  -Myssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssshm`
+  +mssssssssssssssssssssshmd/---........------::://++ossssssssssssssssssoooooosM+`
+  +mssssssssssssssssssssmd-............................-:/+sysssso+/::-......../hdo`
+  :NysssssssssssssssssssyM:..............................-omMMMd................./m`
+  `smsssssssssssssssssssshmh/...........................-mMMMMMd-............-/sdds`
+   .Nysssssssssssssssssssssyddy/.......................-+NmddhosyhyysyyhmddNhs+:`
+    oNyssssssssssssssssssssssshddys+/---.....-:/+osyyhyys/---------:oNydNydN`
+    `hmssssssssssssssssssssssssssyyhhddddNmNmyso+/:----------------+NhhNysmo
+     `ymsssssssssssssssssssssssssssssssssNhyN+--------------------+NhyNhssN/
+      `sNyssssssssssssssssssssssssssssssshNyyNs:----------------:yNyhNhsshN`
+       `/mdysssssssssssssssssssssssssssssshNhydmso/:----------/hmdhmmysshM+
+         `+mdysssssssssssssssssssssssssssssymmhyyhdddhhyyssyhmdhhmmyssydmo`
+           `/ymdyssssssssssssssssssssssssssssyhmmddmddhhhhhhhhdmdyssssNs.
+              `/ymdyssssssssssssssssssssssssssssssssyyhhhhhhhhysssyhdmo`
+                 `-ohdddhyssssssssssssssyyyyyyyyyyyyyhhhhhddddmhhyo/.`
+                     ``.:osssssssssssssssooooooooooo+/:::-.````
+
+                     WHAD ARE U DOING IN MY CODE FUG >>>>:DDDDDDDDDD :DDD :D :DDDD
+
+ -->
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DNS Health</title>
-    <link rel="stylesheet" href="css/styles.min.css" />
-    <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>DNS Health</title>
+	<link rel="stylesheet" href="css/styles.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -41,6 +76,12 @@
     </nav>
 
     <div>
+        <!-- Modal -->
+        <div style="margin-top: 50px" class="w-full flex justify-center">
+            <div id="ex1" class="modal fade hidden justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" tabindex="-1"
+                 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </div>
+        </div>
         <!-- An error message block which is hidden by default -->
         <div role="alert" id="error-block" class="hidden">
             <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -76,37 +117,38 @@
                                             <span class="tooltip-text">Enabling this will show the results in a terminal view instead of a table.</span>
                                         </span>
                                     </span>
-                                </label>
-                                </div>
-                                <div class="w-full md:w-1/2">
-                                    <label class="block text-gray-500 font-bold">
-                                    <input class="mr-2 leading-tight" type="checkbox" id="delegated-domain"/>
-                                    <span class="text-sm">
+								</label>
+							</div>
+							<div class="w-1/2 h-12">
+								<label class="md:w-2/3 block text-gray-500 font-bold">
+									<input class="mr-2 leading-tight" type="checkbox" id="delegated-domain"/>
+									<span class="text-sm">
                                         Delegated domain
                                         <span class="tooltip">
                                             <i class="fa fa-info"></i>
                                             <span class="tooltip-text">Enabling this will run the checks toward the current nameservers of the domain.</span>
                                         </span>
                                     </span>
-                                </label>
-                                </div>
-                                <div class="w-1/2 h-12 hidden">
-                                    <label class="md:w-2/3 block text-gray-500 font-bold">
-                                    <input class="mr-2 leading-tight" type="checkbox" id="ipv6"/>
-                                    <span class="text-sm">
+								</label>
+							</div>
+							<div class="w-1/2 h-12 hidden">
+								<label class="md:w-2/3 block text-gray-500 font-bold">
+									<input class="mr-2 leading-tight" type="checkbox" id="ipv6"/>
+									<span class="text-sm">
                                         IPv6
                                     </span>
-                                </label>
-                                    <!-- Check boxes END -->
-                                </div>
-                            </div>
-                            <!-- NS server input field START -->
-                            <label class="block text-sm font-bold mb-2 ns-group" for="ns1">
-                            NS Servers
-                        </label>
-
-                            <input id="ns1" type="text" placeholder="" name="ns[]" class="ns-group bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" />
-                            <!-- NS server input END  -->
+								</label>
+								<!-- Check boxes END -->
+							</div>
+						</div>
+						<!-- NS server input field START -->
+						<label class="block text-sm font-bold mb-2" for="ns1">
+							NS Servers
+						</label>
+						
+						<input id="ns1" type="text" placeholder="" name="ns[]"
+						       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
+						<!-- NS server input END  -->
 
                             <!-- Display the value taken from domain - just for testing	-->
                             <p id="demo"></p>
@@ -156,7 +198,7 @@
                 var d = new Date()
                 document.write(d.getFullYear())
             </script>
-            DNS Health
+            <a target="_blank" href="https://project.dnshealth.eu/">DNS Health</a>
         </p>
         <p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
     </footer>
