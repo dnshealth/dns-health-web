@@ -81,9 +81,10 @@ class DNSChecker {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">' +
-                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILD</button></td>' +
+                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILED</button></td>' +
                     '</tr>');
-                $('#ex2').append(
+                
+                    $('#ex2').append(
                     ' <div class="px-6 py-4">' +
                     ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
                     ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
@@ -97,8 +98,6 @@ class DNSChecker {
                 );
             }
         }
-
-
 
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
