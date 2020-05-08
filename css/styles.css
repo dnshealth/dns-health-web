@@ -18,20 +18,22 @@ img {
     vertical-align: right;
 }
 
-
-/*.leftlist {
-    float: left;
-    width: 49%;
-    padding-left: 25px;
-    background-color: #FFFFFF;
+#ns-list {
+    display: inline;
+    list-style: none;
 }
 
-.rightlist {
-    width: 49%;
-    float: right;
-    background-color: #FFFFFF;
-    padding-left: 25px;
-}*/
+#ns-list li {
+    display: inline;
+}
+
+#ns-list li:after {
+    content: ", ";
+}
+
+#ns-list li:last-child:after {
+    content: "";
+}
 
 div.faq {
     background-color: rgba(205, 202, 202, 0.53);

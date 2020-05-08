@@ -12,8 +12,7 @@ class DNSChecker {
     constructor(table) {
         // Initialise the terminal view.
         this.terminal = new Termynal(
-            '#terminal',
-            {
+            '#terminal', {
                 startDelay: 500,
                 lineData: []
             });
@@ -29,21 +28,24 @@ class DNSChecker {
             const terminal = this.terminal;
             terminal.addLines(
                 [
-                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
+                    { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
                 ]
             );
 
             var result = ApiHandler.request(
                 "POST",
-                "/check",
-                {
+                "/check", {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
-                function (result) {
+                function(result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(terminal, result.checks);
+                    console.log(result.ns);
+
+                    DNSChecker.requestedNameserver(result.ns);
+
                 }
             );
         } else {
@@ -51,13 +53,15 @@ class DNSChecker {
             $("#table-view").html('');
             var result = ApiHandler.request(
                 "POST",
-                "/check",
-                {
+                "/check", {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
-                    },
-                function (result) {
+                },
+                function(result) {
+
+                    DNSChecker.requestedNameserver(result.ns);
+
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
                     $("#table-main").show();
@@ -66,7 +70,16 @@ class DNSChecker {
         }
     }
 
-    static showResultsTable(results){
+    static requestedNameserver(ns) {
+        $("#nameservers").show();
+        $("#nameservers ul").html("");
+
+        for (var i = 0; i < ns.length; i++) {
+            $("#nameservers ul").append("<li>" + ns[i] + "</li>");
+        }
+    }
+
+    static showResultsTable(results) {
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
