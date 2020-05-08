@@ -76,34 +76,31 @@ class DNSChecker {
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
+
                 //console.log(results[i]["description"])
             } else {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
-                    '<td class="border px-4 py-2" style="background: red">' +
-                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILED</button></td>' +
-                    '</tr>');
-                
-                    $('#ex2').append(
+                    '<td class="border px-4 py-2" style="background: red">FAILD</td>' +
+                    '</tr>'
+
+                );
+                $('#ex2').append(
                     ' <div class="px-6 py-4">' +
                     ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
                     ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
-                    ' </div>' +
-                    ' <div class="px-6 py-4">' +
-                    '<!-- Using utilities: -->\n' +
-                    '<button class="remove_field_modal2 bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
-                    '  CLOSE ' +
-                    '</button>' +
                     ' </div>'
                 );
             }
         }
+        $('#table-main').append('<button id="failBTN" type="button" class="justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-toggle="modal" data-target="#ex2">Show me more details on what failed</button>')
 
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
             $(this).parent().parent().hide()
 
         });
+
     }
 
     static showResults(terminal, results) {
