@@ -81,7 +81,7 @@ class DNSChecker {
             } else {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
-                    '<td class="border px-4 py-2" style="background: red">FAILD</td>' +
+                    '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
                     '</tr>'
 
                 );
@@ -93,7 +93,7 @@ class DNSChecker {
                 );
             }
         }
-        $('#table-main').append('<button id="failBTN" type="button" class="justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-toggle="modal" data-target="#ex2">Show me more details on what failed</button>')
+        $('#table-main').append('<button id="failBTN" type="button" class="justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-toggle="modal" data-target="#ex2">Show me what failed</button>')
 
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
