@@ -57,7 +57,7 @@ class DNSChecker {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
-                },
+                    },
                 function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
@@ -66,7 +66,7 @@ class DNSChecker {
         }
     }
 
-    static showResultsTable(results) {
+    static showResultsTable(results){
         for (let i in results) {
             var s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
@@ -76,55 +76,34 @@ class DNSChecker {
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
-                //console.log(results[i]["description"])
+                    //console.log(results[i]["description"])
             } else {
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">' +
-                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILD</button></td>' +
+                    '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILED</button></td>' +
                     '</tr>');
-<<<<<<< HEAD
-                $('#ex2').append(
-                    ' <div class="px-6 py-4">' +
-                    ' <div class="font-bold text-xl mb-2">' + results[0]["description"] + '</div>\n' +
-                    ' <p class="text-gray-700 text-base">' + results[0]["description"] + ' </p>' +
-                    ' </div>' +
-                    ' <div class="px-6 py-4">' +
-                    '<!-- Using utilities: -->\n' +
-                    '<button class="bg-blue-500 justify-center hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">' +
-                    '  CLOSE ' +
-                    '</button>' +
-                    ' </div>'
-                );
-            }
-        }
 
-
-
-=======
-
-                    $('#ex2').append('<divd role="document">' +
+                    $('#ex2').append('<div role="document">' +
                     '<div class="modal-content">' +
                     '<div class="modal-header">' +
-                    '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">' + results[7]["description"] + '</h2>' +
+                    '<h2 class="modal-title" id="popupModal" style="text-align: center">' + results[i]["description"] + '</h2>' +
                     '</div>' +
                     '<div class="modal-body justify-center">' +
                     '<p id="ip-egg"></p>' +
-                    '<p>'+ results[7]["details"]+'</p>' +
-                    '<p>Say Hi to The FBI</p>' +
+                    '<p>'+ results[i]["details"]+'</p>' +
                     '</div>' +
                     '<div class="modal-footer">' +
-                    '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
+                    '<button  type="button" tabindex="-1" class="remove_field_modal2 close" data-dismiss="modal" style="float: right">&#10060;</button>' +
                     '</div>' +
                     '</div>');
         
             }
         }
         
->>>>>>> cb45a6e0967409ae12fe0df7f4740a5cd33b7bcb
-        $('#ex2').on("click", ".remove_field_modal", function (e) { //user click on remove text links
+        $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
-            $(this).parent().parent().parent().parent().remove()
+            $(this).parent().parent().parent().parent().hide()
 
         });
     }
