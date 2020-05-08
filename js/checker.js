@@ -83,6 +83,7 @@ class DNSChecker {
                     '<td class="border px-4 py-2" style="background: red">' +
                     '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILD</button></td>' +
                     '</tr>');
+<<<<<<< HEAD
                 $('#ex2').append(
                     ' <div class="px-6 py-4">' +
                     ' <div class="font-bold text-xl mb-2">' + results[0]["description"] + '</div>\n' +
@@ -100,6 +101,27 @@ class DNSChecker {
 
 
 
+=======
+
+                    $('#ex2').append('<divd role="document">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">' + results[7]["description"] + '</h2>' +
+                    '</div>' +
+                    '<div class="modal-body justify-center">' +
+                    '<p id="ip-egg"></p>' +
+                    '<p>'+ results[7]["details"]+'</p>' +
+                    '<p>Say Hi to The FBI</p>' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
+                    '</div>' +
+                    '</div>');
+        
+            }
+        }
+        
+>>>>>>> cb45a6e0967409ae12fe0df7f4740a5cd33b7bcb
         $('#ex2').on("click", ".remove_field_modal", function (e) { //user click on remove text links
             e.preventDefault();
             $(this).parent().parent().parent().parent().remove()
