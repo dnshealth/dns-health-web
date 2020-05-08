@@ -83,23 +83,25 @@ class DNSChecker {
                     '<td class="border px-4 py-2" style="background: red">' +
                     '<button id="failBTN" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ex2">FAILD</button></td>' +
                     '</tr>');
+
+                    $('#ex2').append('<divd role="document">' +
+                    '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">' + results[7]["description"] + '</h2>' +
+                    '</div>' +
+                    '<div class="modal-body justify-center">' +
+                    '<p id="ip-egg"></p>' +
+                    '<p>'+ results[7]["details"]+'</p>' +
+                    '<p>Say Hi to The FBI</p>' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
+                    '</div>' +
+                    '</div>');
+        
             }
         }
-        $('#ex2').append('<divd role="document">' +
-            '<div class="modal-content">' +
-            '<div class="modal-header">' +
-            '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">' + results[7]["description"] + '</h2>' +
-            '</div>' +
-            '<div class="modal-body justify-center">' +
-            '<p id="ip-egg"></p>' +
-            '<p>'+ results[7]["details"]+'</p>' +
-            '<p>Say Hi to The FBI</p>' +
-            '</div>' +
-            '<div class="modal-footer">' +
-            '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
-            '</div>' +
-            '</div>');
-
+        
         $('#ex2').on("click", ".remove_field_modal", function (e) { //user click on remove text links
             e.preventDefault();
             $(this).parent().parent().parent().parent().remove()
