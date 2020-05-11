@@ -46,6 +46,8 @@ class DNSChecker {
 
                     DNSChecker.requestedNameserver(result.ns);
 
+
+
                 }
             );
         } else {
@@ -61,6 +63,8 @@ class DNSChecker {
                 function(result) {
 
                     DNSChecker.requestedNameserver(result.ns);
+
+
 
                     // When the response has been received, this will run.
                     DNSChecker.showResultsTable(result.checks);
@@ -78,6 +82,8 @@ class DNSChecker {
             $("#nameservers ul").append("<li>" + ns[i] + "</li>");
         }
     }
+
+
 
     static showResultsTable(results) {
         for (let i in results) {
