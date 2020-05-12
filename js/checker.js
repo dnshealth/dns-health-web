@@ -9,22 +9,24 @@
 'use strict';
 
 class DNSChecker {
-    constructor(table) {
-        // Initialise the terminal view.
+    constructor() {
+        // Initialise the terminal view to the #terminal HTML DOM element.
         this.terminal = new Termynal(
             '#terminal', {
                 startDelay: 500,
                 lineData: []
             });
-        this.resultsTable = table;
     }
 
     async start(domain, ns) {
+        // When we start the DNS checker, we will check if terminal view is enabled on not.
+        // Depending on the result, we either print the results to terminal or the table view.
         if ($('input#terminal-view').is(':checked')) {
+            // When terminal view is enabled, we will first empty the terminal of any previous content, hide the table and show the terminal.
             $("#terminal").html('');
             $("#table-main").hide();
             $("#terminal").show();
-            // Print the command to terminal.
+            // Animate the dnschecker command typing to the terminal.
             const terminal = this.terminal;
             terminal.addLines(
                 [
@@ -32,7 +34,9 @@ class DNSChecker {
                 ]
             );
 
-            var result = ApiHandler.request(
+            // Make an AJAX request to the /check endpoint in the REST API.
+            // Pass the domain, nameservers and value of the delegated domain checkbox to the endpoint
+            const result = ApiHandler.request(
                 "POST",
                 "/check", {
                     "domain": domain,
@@ -40,18 +44,17 @@ class DNSChecker {
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
                 function(result) {
-                    // When the response has been received, this will run.
+                    // When the response has been received, this will run. Show the results in the terminal.
                     DNSChecker.showResults(terminal, result.checks);
-                    console.log(result.ns);
 
+                    // Print the nameservers we checked towards.
                     DNSChecker.requestedNameserver(result.ns);
-
                 }
             );
         } else {
             $("#terminal").hide();
             $("#table-view").html('');
-            var result = ApiHandler.request(
+            const result = ApiHandler.request(
                 "POST",
                 "/check", {
                     "domain": domain,
@@ -60,10 +63,12 @@ class DNSChecker {
                 },
                 function(result) {
 
+                    // Print the nameservers we checked towards.
                     DNSChecker.requestedNameserver(result.ns);
 
-                    // When the response has been received, this will run.
+                    // When the response has been received, this will run. Show the results in the table.
                     DNSChecker.showResultsTable(result.checks);
+                    // Show the table only after we received the results :)
                     $("#table-main").show();
                 }
             );
@@ -71,17 +76,19 @@ class DNSChecker {
     }
 
     static requestedNameserver(ns) {
+        // Show the #nameservers DOM and empty the content in the list within.
         $("#nameservers").show();
         $("#nameservers ul").html("");
 
-        for (var i = 0; i < ns.length; i++) {
+        // Append the nameservers we got back from the REST API to the list within.
+        for (let i = 0; i < ns.length; i++) {
             $("#nameservers ul").append("<li>" + ns[i] + "</li>");
         }
     }
 
     static showResultsTable(results) {
+        // for each check result we got, check if it passed or failed and append the appropriate DOM to table view.
         for (let i in results) {
-            let s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
@@ -116,17 +123,18 @@ class DNSChecker {
     }
 
     static showResults(terminal, results) {
-        var data = results.map(check => {
+        // Create an array of check result objects with map() which we then pass to the terminal script, to print the results.
+        const data = results.map(check => {
             if (check["result"]) {
-                check["class"] = "green";
+                check["class"] = "green"; // This sets the DOM class to green. It is set in the CSS to have a green text color.
                 check["value"] = `PASS - ${check["description"] || ''}`;
                 return check;
             } else {
-                check["class"] = "red";
+                check["class"] = "red"; // Red text colour.
                 check["value"] = `FAILED - ${check["description"] || ''}`;
                 return check;
             }
         });
-        terminal.addChecks(data);
+        terminal.addChecks(data); // Pass the object to the terminal script, in order to print the results.
     }
 }

@@ -53,17 +53,6 @@ class Termynal {
         // Appends dynamically loaded lines to existing line elements.
         this.lines = [...this.container.querySelectorAll(`[${this.pfx}]`)].concat(this.lineData);
 
-        /** 
-         * Calculates width and height of Termynal container.
-         * If container is empty and lines are dynamically loaded, defaults to browser `auto` or CSS.
-         */ 
-        /*const containerStyle = getComputedStyle(this.container);
-        console.log(containerStyle);
-        this.container.style.width = containerStyle.width !== '0px' ? 
-            containerStyle.width : undefined;
-        this.container.style.minHeight = containerStyle.height !== '0px' ? 
-            containerStyle.height : undefined;*/
-
         this.container.setAttribute('data-termynal', '');
         this.container.innerHTML = '';
         this.start();
@@ -79,6 +68,7 @@ class Termynal {
             const type = line.getAttribute(this.pfx);
             const delay = line.getAttribute(`${this.pfx}-delay`) || this.lineDelay;
 
+            // Check what type of input it is and print appropriately.
             if (type == 'input') {
                 line.setAttribute(`${this.pfx}-cursor`, this.cursor);
                 await this.type(line);
