@@ -44,12 +44,12 @@
     <h1 class="text-center">FAQ</h1>
     <div class="flex flex-wrap justify-center my-8">
         <div class="w-full lg:w-1/2">
-            <div class="faq p-4 mx-4">
+            <div class="faq p-4 m-4">
                 <h2>General</h2>
-                <h3>What is DNS H<a href="javascript:e();">E</a>ALTH?</h3>
+                <h3>What is DNSHEALTH?</h3>
                 <p>It is an online tool designed to help webmasters verify the health of a DNS zone on a set of DNS servers for a particular domain name.</p><br>
                 <h3>How can I use it?</h3>
-                <p>You can use the tool free of charge on our front page <a href="index.html">here</a>. You can choose to either only enter a domain, in which case the tool checks the current nameservers of the domain, or also manually enter the nameservers
+                <p>You can use the tool free of charge on our front page <a href="index.html">here</a>. You can choose to either only enter a domain by checking the "Delegated domain" checkbox, in which case the tool checks the current nameservers of the domain, or also manually enter the nameservers
                     you wish to check towards.</p><br>
                 <h3>How can I contact you?</h3>
                 <p>You can contact us by sending an email to info@dnshealth.eu</p><br>
@@ -62,19 +62,7 @@
                 <h3>Who created the tool?</h3>
                 <p>The tool was created by a group university of students at KTH during a project course.</p><br>
                 <h3>How secure is this?</h3>
-                <p>The tool requires no registration to use and it is completely stateless. It is as secure as it can be.</p>
-            </div>
-        </div>
-
-        <div class="w-full lg:w-1/2">
-            <div class="faq p-4 mx-4">
-                <h2>Technical questions</h2>
-                <h3>Why did it fail when I ...</h3>
-                <p>It failed because..., it can be solved if you....</p><br>
-                <h3>I got an error when I typed in ....</h3>
-                <p>That is because .... and you should do ....</p><br>
-                <h3>Why did this check pass when I ...</h3>
-                <p>You should get a pass because .... </p><br>
+                <p>The tool requires no registration to use and it is completely stateless. It is as secure as it can be.</p><br/>
 
                 <h2>Administrative</h2>
                 <h3>Do I need to register?</h3>
@@ -83,6 +71,49 @@
                 <p>Yes. Please send us an email to info@dnshealth.eu and we will give you access. (fair usage applies)</p><br>
                 <h3>I would like to get new features. Is that possible?</h3>
                 <p>You can create an issue in our <a href="https://github.com/dnshealth/dns-health">Github</a> and we will consider your request.</p>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-1/2">
+            <div class="faq p-4 m-4">
+                <h2>Technical questions</h2>
+                <h3>The <i>Valid hostnames</i> check failed. What can I do?</h3>
+                <p>The domain you entered and its nameservers can only contain letters a-z, the digits 0 to 9 and hyphens. A hostname can not start with a hyphen. A hostname can be at most 253 characters long.</p><br>
+
+                <h3>The <i>Prohibited Networks</i> check failed. What is the problem?</h3>
+                <p>One of the nameservers has its IP defined within a prohibited IP range.</p><br>
+
+                <h3>The <i>Checking nameserver reachability</i> check failed. What can I do?</h3>
+                <p>Make sure that the nameservers are reachable over both TCP and UDP at port 53.</p><br>
+
+                <h3>The <i>Checking for authoritative answers</i> check failed. What can I do?</h3>
+                <p>It means that the nameserver has not been set up to answer queries about the domain name. Make sure a DNS zone exists for the domain.</p><br/>
+
+                <h3>The <i>Same source address as destination address</i> check failed. What can I do?</h3>
+                <p>This implies that the nameserver responded from a different IP than the one the request was sent to. Make sure that the DNS server is binded to the correct network interface/IP.</p><br/>
+
+                <h3>The <i>Check glue consistency</i> check failed. What can I do?</h3>
+                <p>Ensure that the glue records set for the nameservers match the A/AAAA records set at the nameservers. They must be identical.</p><br/>
+
+                <h3>The <i>Consistency between delegation and zone</i> check failed. What can I do?</h3>
+                <p>Verify that the nameservers checked towards match the set of NS records found at those nameservers.</p><br/>
+
+                <h3>The <i>Consistency between authoritative nameservers</i> check failed. What can I do?</h3>
+                <p>Make sure that the set of nameservers all have an identical set of NS records.</p><br/>
+
+                <h3>The <i>Unique nameservers</i> check failed. What can I do?</h3>
+                <p>Check that there are at least 2 unique nameservers which all have an unique IP address.</p><br/>
+
+                <h3><i>Network diversity</i> failed. What can be done to correct this?</h3>
+                <p>Ensure that the nameservers are located within at least two AS blocks. If the nameservers have all IP addresses very close to each other, it implies they do not have optimal redundancy.</p><br>
+
+                <h3>What are <u>glue records</u>?</h3>
+                <p>In Domain Name System the nameservers are defined by name, not by IP address.
+                    This means that an additional DNS inquiry is required to find the IP address of a nameserver.
+                    If the authoritative nameserver of a domain is under the domain itself, there will be a circular dependency.
+                    Glue records are used to solve this problem by defining the IP address of the nameserver at the TLD DNS zone.
+                    You will be able to set up the glue records at your domain name registrar.
+                </p>
             </div>
         </div>
     </div>
