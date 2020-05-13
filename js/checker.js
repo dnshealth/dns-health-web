@@ -29,7 +29,7 @@ class DNSChecker {
             const terminal = this.terminal;
             terminal.addLines(
                 [
-                    { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
+                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
                 ]
             );
 
@@ -40,7 +40,7 @@ class DNSChecker {
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
-                function(result) {
+                function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(terminal, result.checks);
                     console.log(result.ns);
@@ -59,7 +59,7 @@ class DNSChecker {
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
-                function(result) {
+                function (result) {
 
                     DNSChecker.requestedNameserver(result.ns);
 
@@ -96,7 +96,6 @@ class DNSChecker {
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
                     '</tr>'
-
                 );
                 $('#ex2').append('<div class="px-6 py-4">' +
                     ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
@@ -127,8 +126,7 @@ class DNSChecker {
                     '<p>' + results[i]["details"] + '</p>' +
 
                     '<!--Footer-->' +
-                    '<div class="flex justify-end pt-2">' +
-                    '<button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>' +
+                    '<div class="footer-modal-close flex justify-end pt-2">' +
                     '</div>' +
                     '</div>');
             }
@@ -140,7 +138,7 @@ class DNSChecker {
             $(this).parent().parent().hide()
 
         });
-        $('#table-main').on("click", ".modal-open",function (e) {
+        $('#table-main').on("click", ".modal-open", function (e) {
             e.preventDefault();
             var openmodal = document.querySelectorAll('.modal-open')
             for (var i = 0; i < openmodal.length; i++) {

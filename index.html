@@ -52,6 +52,7 @@
 	<title>DNS Health</title>
 	<link rel="stylesheet" href="css/styles.min.css"/>
 	<link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
+	<!-- This is needed for the functionality of the Modals -->
 	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
@@ -91,16 +92,9 @@
 
 
 <!-- Test Modal START -->
-<!--<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">-->
-<!--	Open Modal-->
-<!--</button>-->
 <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
 	<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-	
-	<div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-	
-	
-	</div>
+	<div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"></div>
 </div>
 <!-- Test Modal END -->
 
@@ -123,7 +117,7 @@
 			</p>
 		</div>
 	</div>
-	<!-- -->
+	
 	<!-- Three columns -->
 	<!-- Domain input field start FORM -->
 	<div style="margin-top: 15px" class="w-full flex justify-center">
@@ -131,14 +125,15 @@
 			<form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 				<div class="input_fields_container_part">
 					<div>
+						<!-- Domain input field START -->
 						<label class="block text-sm font-bold mb-2" for="domain">
 							Domain
 						</label>
 						<input id="domain" name="domain" type="text" placeholder="Your Domain Here"
 						       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-						<!-- Domain input field end -->
 						<!-- Check Boxes Start -->
 						<div class="flex flex-wrap mb-4" style="margin-top: 10px">
+							<!-- Check box Terminal View START-->
 							<div class="w-full md:w-1/2">
 								<label class="block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="terminal-view"/>
@@ -151,6 +146,7 @@
                                     </span>
 								</label>
 							</div>
+							<!-- Check box Delegated Domain START-->
 							<div class="w-1/2 h-12">
 								<label class="md:w-2/3 block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="delegated-domain"/>
@@ -163,6 +159,7 @@
                                     </span>
 								</label>
 							</div>
+							<!-- Check box IPv6 START-->
 							<div class="w-1/2 h-12 hidden">
 								<label class="md:w-2/3 block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="ipv6"/>
@@ -170,20 +167,16 @@
                                         IPv6
                                     </span>
 								</label>
-								<!-- Check boxes END -->
 							</div>
+							<!-- Check box IPv6 END-->
 						</div>
 						<!-- NS server input field START -->
 						<label class="block text-sm font-bold mb-2 ns-group" for="ns1">
 							NS Servers
 						</label>
-						
 						<input id="ns1" type="text" placeholder="" name="ns[]"
 						       class="ns-group bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
 						<!-- NS server input END  -->
-						
-						<!-- Display the value taken from domain - just for testing	-->
-						<p id="demo"></p>
 					</div>
 				</div>
 				<div class="g-recaptcha" data-sitekey="6LeVyPIUAAAAAJQk1fDNEI9MDQDzIpRAcN2AEkxJ"></div>
@@ -207,19 +200,12 @@
 				<span class="font-bold">Nameservers:</span>
 				<ul id="ns-list"></ul>
 			</div>
-			
-			
+			<!-- The terminal animation will be rendered here -->
 			<div id="terminal"></div>
 		</div>
 	</div>
-	<!-- Modal Extra Information-->
-	<div style="margin-top: 50px" class="w-full flex justify-center">
-		<div id="ex2" class="hidden max-w-screen-lg rounded overflow-hidden shadow-lg">
-			<h2 style="text-align: center; color: #1a202c">This is a detailed view of what failed.</h2>
-		</div>
-	</div>
 	
-	<!-- List View Table -->
+	<!-- List View Table START -->
 	<div class="w-full flex justify-center">
 		<table id="table-main" class="table-auto hidden" style="margin-bottom: 10px">
 			<thead>
@@ -231,6 +217,7 @@
 			<tbody id="table-view"></tbody>
 		</table>
 	</div>
+	<!-- List View Table END -->
 </div>
 
 <footer id="footer">
@@ -244,7 +231,6 @@
 	</p>
 	<p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
 </footer>
-
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
