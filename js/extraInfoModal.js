@@ -4,7 +4,7 @@
 
 let openmodal = document.querySelectorAll('.modal-open')
 for (var i = 0; i < openmodal.length; i++) {
-    openmodal[i].addEventListener('click', function(event){
+    openmodal[i].addEventListener('click', function(event) {
         event.preventDefault()
         toggleModal()
     })
@@ -26,17 +26,16 @@ document.onkeydown = function(evt) {
     } else {
         isEscape = (evt.keyCode === 27)
     }
-    if (isEscape && document.body.classList.contains('modal-active')) {
+    if (isEscape && document.body.classList.contains('.modal-active')) {
         toggleModal()
     }
 };
 
 
-function toggleModal () {
+function toggleModal() {
     const body = document.querySelector('body')
     const modal = document.querySelector('.modal')
     modal.classList.toggle('opacity-0')
     modal.classList.toggle('pointer-events-none')
     body.classList.toggle('modal-active')
 }
-
