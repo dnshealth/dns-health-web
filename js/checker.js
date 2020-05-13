@@ -9,6 +9,8 @@
 
 'use strict';
 
+
+
 class DNSChecker {
     constructor(table) {
         // Initialise the terminal view.
@@ -29,7 +31,7 @@ class DNSChecker {
             const terminal = this.terminal;
             terminal.addLines(
                 [
-                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
+                    { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
                 ]
             );
 
@@ -40,7 +42,7 @@ class DNSChecker {
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
-                function (result) {
+                function(result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(terminal, result.checks);
                     console.log(result.ns);
@@ -59,7 +61,7 @@ class DNSChecker {
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked')
                 },
-                function (result) {
+                function(result) {
 
                     DNSChecker.requestedNameserver(result.ns);
 
@@ -109,10 +111,7 @@ class DNSChecker {
                 $('.modal-open').show();
                 // This will render the modal with the extra information taken from the backend
                 $('.modal-container').append('<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
-                    '<svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">' +
-                    '<path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>' +
-                    '</svg>' +
-                    '<span class="text-sm">(Esc)</span>' +
+
                     '</div>' +
 
                     '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
@@ -120,27 +119,18 @@ class DNSChecker {
                     '<!--Title-->' +
                     '<div class="flex justify-between items-center pb-3">' +
                     '<p class="text-2xl font-bold">' + results[i]["description"] + '</p>' +
-                    '<div class="modal-close cursor-pointer z-50">' +
-                    '<svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">' +
-
-                    '</svg>' +
-                    '</div>' +
                     '</div>' +
 
                     '<!--Body-->' +
                     '<p>' + results[i]["details"] + '</p>' +
                     '</div>');
+
             }
+
         }
-        //Append Button bellow the table to trigger the Modal with the extra information
-        //$('#table-main').append('<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Show me what FAILED</button>')
+        //Closing button for modal extra-info
+        $('.modal-container').append('<button class="modal-close bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
 
-        //TODO use to close the modal if the modal logic is not working
-        $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
-            e.preventDefault();
-            $(this).parent().parent().hide()
-
-        });
         //This section takes care of opening the Modal on a button click (.modal-open)
         /*$('#table-main').on("click", ".modal-open", function (e) {
             e.preventDefault();

@@ -37,105 +37,99 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		.modal {
-			transition: opacity 0.25s ease;
-		}
-		
-		body.modal-active {
-			overflow-x: hidden;
-			overflow-y: visible !important;
-		}
-	</style>
-	<title>DNS Health</title>
-	<link rel="stylesheet" href="css/styles.min.css"/>
-	<link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
-	<!-- This is needed for the functionality of the Modals -->
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        
+        body.modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
+        }
+    </style>
+    <title>DNS Health</title>
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/all.min.css">
+    <!-- This is needed for the functionality of the Modals -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
 
 <body>
-<nav class="flex items-center justify-between flex-wrap bg-gray-363537">
-	<div class="flex items-center flex-shrink-0 text-white mx-4">
-		<img src="assets/images/dns_health.png" height="50" width="50"/>
-		<span class="font-semibold text-2xl tracking-tight ml-3">DNS Health</span>
-	</div>
-	<div class="show-hide block lg:hidden">
-		<button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
+    <nav class="flex items-center justify-between flex-wrap bg-gray-363537">
+        <div class="flex items-center flex-shrink-0 text-white mx-4">
+            <img src="assets/images/dns_health.png" height="50" width="50" />
+            <span class="font-semibold text-2xl tracking-tight ml-3">DNS Health</span>
+        </div>
+        <div class="show-hide block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white ">
 			<svg class="fill-current h-3 w-3 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg"><title>
 				Menu</title>
 				<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z "/>
 			</svg>
 		</button>
-	</div>
-	
-	<div id="information" class="w-full flex-grow mb-4 lg:mb-0 lg:flex lg:items-center lg:w-auto lg:block hidden">
-		<div id="nav_bar" class="text-sm lg:flex-grow">
-			<a href="index.html"
-			   class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+        </div>
+
+        <div id="information" class="w-full flex-grow mb-4 lg:mb-0 lg:flex lg:items-center lg:w-auto lg:block hidden">
+            <div id="nav_bar" class="text-sm lg:flex-grow">
+                <a href="index.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
 				Home
 			</a>
-			<a href="faq.html"
-			   class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+                <a href="faq.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
 				FAQ
 			</a>
-			<a href="about.html"
-			   class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
+                <a href="about.html" class="block mt-4 lg:inline-block lg:mt-0 text-lg text-white hover:bg-gray-700 px-3 py-2 lg:py-4 text-white mr-4 ">
 				About
 			</a>
-		</div>
-	</div>
-</nav>
+            </div>
+        </div>
+    </nav>
 
 
-<!-- Test Modal START -->
-<div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-	<div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-	<div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"></div>
-</div>
-<!-- Test Modal END -->
+    <!-- Test Modal START -->
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"></div>
+    </div>
+    <!-- Test Modal END -->
 
-<!-- Form + dynamic spawn -->
-<div>
-	<!-- Modal EGG -->
-	<div style="margin-top: 50px" class="w-full flex justify-center">
-		<div id="ex1" class="modal fade hidden justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-		     tabindex="-1"
-		     role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		</div>
-	</div>
-	<!-- An error message block which is hidden by default -->
-	<div role="alert" id="error-block" class="hidden">
-		<div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-			Error occurred
-		</div>
-		<div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-			<p>Response code: <span class="font-bold" id="error-code"></span>. Message: <span id="error-message"></span>
-			</p>
-		</div>
-	</div>
-	
-	<!-- Three columns -->
-	<!-- Domain input field start FORM -->
-	<div style="margin-top: 15px" class="w-full flex justify-center">
-		<div class="w-full md:w-3/4 lg:w-1/2">
-			<form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-				<div class="input_fields_container_part">
-					<div>
-						<!-- Domain input field START -->
-						<label class="block text-sm font-bold mb-2" for="domain">
+    <!-- Form + dynamic spawn -->
+    <div>
+        <!-- Modal EGG -->
+        <div style="margin-top: 50px" class="w-full flex justify-center">
+            <div id="ex1" class="modal fade hidden justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </div>
+        </div>
+        <!-- An error message block which is hidden by default -->
+        <div role="alert" id="error-block" class="hidden">
+            <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                Error occurred
+            </div>
+            <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                <p>Response code: <span class="font-bold" id="error-code"></span>. Message: <span id="error-message"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Three columns -->
+        <!-- Domain input field start FORM -->
+        <div style="margin-top: 15px" class="w-full flex justify-center">
+            <div class="w-full md:w-3/4 lg:w-1/2">
+                <form id="dnscheck" name="dnscheck" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="input_fields_container_part">
+                        <div>
+                            <!-- Domain input field START -->
+                            <label class="block text-sm font-bold mb-2" for="domain">
 							Domain
 						</label>
-						<input id="domain" name="domain" type="text" placeholder="Your Domain Here"
-						       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
-						<!-- Check Boxes Start -->
-						<div class="flex flex-wrap mb-4" style="margin-top: 10px">
-							<!-- Check box Terminal View START-->
-							<div class="w-full md:w-1/2">
-								<label class="block text-gray-500 font-bold">
+                            <input id="domain" name="domain" type="text" placeholder="Your Domain Here" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal">
+                            <!-- Check Boxes Start -->
+                            <div class="flex flex-wrap mb-4" style="margin-top: 10px">
+                                <!-- Check box Terminal View START-->
+                                <div class="w-full md:w-1/2">
+                                    <label class="block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="terminal-view"/>
 									<span class="text-sm">
                                         Terminal View
@@ -145,10 +139,10 @@
                                         </span>
                                     </span>
 								</label>
-							</div>
-							<!-- Check box Delegated Domain START-->
-							<div class="w-1/2 h-12">
-								<label class="md:w-2/3 block text-gray-500 font-bold">
+                                </div>
+                                <!-- Check box Delegated Domain START-->
+                                <div class="w-1/2 h-12">
+                                    <label class="md:w-2/3 block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="delegated-domain"/>
 									<span class="text-sm">
                                         Delegated domain
@@ -158,100 +152,94 @@
                                         </span>
                                     </span>
 								</label>
-							</div>
-							<!-- Check box IPv6 START-->
-							<div class="w-1/2 h-12 hidden">
-								<label class="md:w-2/3 block text-gray-500 font-bold">
+                                </div>
+                                <!-- Check box IPv6 START-->
+                                <div class="w-1/2 h-12 hidden">
+                                    <label class="md:w-2/3 block text-gray-500 font-bold">
 									<input class="mr-2 leading-tight" type="checkbox" id="ipv6"/>
 									<span class="text-sm">
                                         IPv6
                                     </span>
 								</label>
-							</div>
-							<!-- Check box IPv6 END-->
-						</div>
-						<!-- NS server input field START -->
-						<label class="block text-sm font-bold mb-2 ns-group" for="ns1">
+                                </div>
+                                <!-- Check box IPv6 END-->
+                            </div>
+                            <!-- NS server input field START -->
+                            <label class="block text-sm font-bold mb-2 ns-group" for="ns1">
 							NS Servers
 						</label>
-						<input id="ns1" type="text" placeholder="" name="ns[]"
-						       class="ns-group bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
-						<!-- NS server input END  -->
-					</div>
-				</div>
-				<div class="g-recaptcha" data-sitekey="6LeVyPIUAAAAAJQk1fDNEI9MDQDzIpRAcN2AEkxJ"></div>
-				<!-- Add more NS serve input fields -->
-				<div class="ns-group">
-					<button style="margin-top: 10px; float: right; background: #0a4786" type="button"
-					        class="w-full md:w-auto text-white font-bold py-2 px-4 rounded-full add_more_button">
+                            <input id="ns1" type="text" placeholder="" name="ns[]" class="ns-group bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" />
+                            <!-- NS server input END  -->
+                        </div>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LeVyPIUAAAAAJQk1fDNEI9MDQDzIpRAcN2AEkxJ"></div>
+                    <!-- Add more NS serve input fields -->
+                    <div class="ns-group">
+                        <button style="margin-top: 10px; float: right; background: #0a4786" type="button" class="w-full md:w-auto text-white font-bold py-2 px-4 rounded-full add_more_button">
 						Add More NS servers
 					</button>
-				</div>
-				<!-- Submit / run This button should trigger the terminal view if the checkbox is marked -->
-				<div>
-					<button style="margin-top: 10px; background: #2fbf71" type="submit" form="dnscheck"
-					        class="w-full md:w-auto text-center text-gray-800 font-bold py-2 px-4 rounded">
+                    </div>
+                    <!-- Submit / run This button should trigger the terminal view if the checkbox is marked -->
+                    <div>
+                        <button style="margin-top: 10px; background: #2fbf71" type="submit" form="dnscheck" class="w-full md:w-auto text-center text-gray-800 font-bold py-2 px-4 rounded">
 						Check
 					</button>
-				</div>
-			</form>
-			
-			<div id="nameservers" class="hidden" style="text-align: center;">
-				<span class="font-bold">Nameservers:</span>
-				<ul id="ns-list"></ul>
-			</div>
-			<!-- The terminal animation will be rendered here -->
-			<div id="terminal"></div>
-		</div>
-	</div>
-	
-	<!-- List View Table START -->
-	<div class="w-full flex justify-center">
-		<table id="table-main" class="table-auto hidden" style="margin-bottom: 10px">
-			<thead>
-			<tr>
-				<th class="px-4 py-2">Description</th>
-				<th class="px-4 py-2">Status</th>
-			</tr>
-			</thead>
-			<tbody id="table-view"></tbody>
-		</table>
-	</div>
-	<button class="modal-open hidden bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Show me what FAILED</button>
-	
-	<!-- List View Table END -->
-</div>
+                    </div>
+                </form>
 
-<footer id="footer">
-	<p>
-		Copyright &copy;
-		<script type="text/javascript">
-            var d = new Date()
-            document.write(d.getFullYear())
-		</script>
-		<a target="_blank" href="https://project.dnshealth.eu/">DNS Health</a>
-	</p>
-	<p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
-</footer>
+                <div id="nameservers" class="hidden" style="text-align: center;">
+                    <span class="font-bold">Nameservers:</span>
+                    <ul id="ns-list"></ul>
+                </div>
+                <!-- The terminal animation will be rendered here -->
+                <div id="terminal"></div>
+            </div>
+        </div>
 
-<!--Script to trigger the Modal for extra information-->
-<script defer src="js/extraInfoModal.js"></script>
-<!--Other necessary scripts-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-<script defer type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
-<script defer type="text/javascript" src="assets/terminal/terminal.js"></script>
-<script defer type="text/javascript" src="js/checker.js"></script>
-<script defer type="text/javascript" src="js/main.js"></script>
-<script defer src="js/addBtn.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <!-- List View Table START -->
+        <div class="w-full flex justify-center">
+            <table id="table-main" class="table-auto hidden" style="margin-bottom: 10px">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">Description</th>
+                        <th class="px-4 py-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="table-view"></tbody>
+            </table>
+        </div>
+        <!-- Trigger extra information model-->
+        <div class="w-full flex justify-center mb-3">
+            <button class="modal-open hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Show me what failed</button>
+        </div>
+
+        <!-- List View Table END -->
+    </div>
+
+    <footer id="footer">
+        <p>
+            Copyright &copy;
+            <script type="text/javascript">
+                var d = new Date()
+                document.write(d.getFullYear())
+            </script>
+            <a target="_blank" href="https://project.dnshealth.eu/">DNS Health</a>
+        </p>
+        <p class="text-xs">Powered by <a href="https://nordname.com">NordName</a></p>
+    </footer>
+
+    <!--Script to trigger the Modal for extra information-->
+    <script defer src="js/extraInfoModal.js"></script>
+    <!--Other necessary scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script defer type="text/javascript" src="assets/jquery/jquery-3.5.0.min.js"></script>
+    <script defer type="text/javascript" src="assets/terminal/terminal.js"></script>
+    <script defer type="text/javascript" src="js/checker.js"></script>
+    <script defer type="text/javascript" src="js/main.js"></script>
+    <script defer src="js/addBtn.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
