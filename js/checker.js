@@ -131,6 +131,14 @@ class DNSChecker {
         //Closing button for modal extra-info
         $('.modal-container').append('<button class="modal-close bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
 
+        //Append Button bellow the table to trigger the Modal with the extra information
+
+        //TODO use to close the modal if the modal logic is not working
+        $('.modal-container').on("click", ".modal-close", function(e) { //user click on remove text links
+            e.preventDefault();
+            $(this).parent().parent().hide()
+
+        });
         //This section takes care of opening the Modal on a button click (.modal-open)
         /*$('#table-main').on("click", ".modal-open", function (e) {
             e.preventDefault();
