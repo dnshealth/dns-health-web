@@ -80,18 +80,21 @@ class DNSChecker {
         }
     }
 
+    //Show PASS / FAIL Results in a table view with description
     static showResultsTable(results) {
         for (let i in results) {
             let s = document.getElementById(`c${results[i]["id"]}`);
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
+                // This will render the PASSED tests in the table.
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
 
             } else {
+                // This will render the FAILED tests in the table.
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
@@ -103,7 +106,9 @@ class DNSChecker {
                     ' </div>'
                 );
 
-                $('.modal-container').append('\t\t<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
+                $('.modal-open').show();
+                // This will render the modal with the extra information taken from the backend
+                $('.modal-container').append('<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
                     '<svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">' +
                     '<path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>' +
                     '</svg>' +
@@ -124,21 +129,20 @@ class DNSChecker {
 
                     '<!--Body-->' +
                     '<p>' + results[i]["details"] + '</p>' +
-
-                    '<!--Footer-->' +
-                    '<div class="footer-modal-close flex justify-end pt-2">' +
-                    '</div>' +
                     '</div>');
             }
         }
-        $('#table-main').append('<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal </button>')
+        //Append Button bellow the table to trigger the Modal with the extra information
+        //$('#table-main').append('<button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Show me what FAILED</button>')
 
+        //TODO use to close the modal if the modal logic is not working
         $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
             e.preventDefault();
             $(this).parent().parent().hide()
 
         });
-        $('#table-main').on("click", ".modal-open", function (e) {
+        //This section takes care of opening the Modal on a button click (.modal-open)
+        /*$('#table-main').on("click", ".modal-open", function (e) {
             e.preventDefault();
             var openmodal = document.querySelectorAll('.modal-open')
             for (var i = 0; i < openmodal.length; i++) {
@@ -149,7 +153,7 @@ class DNSChecker {
             }
 
             const overlay = document.querySelector('.modal-overlay')
-            overlay.addEventListener('click', toggleModal)
+            //overlay.addEventListener('click', toggleModal)
 
             var closemodal = document.querySelectorAll('.modal-close')
             for (var i = 0; i < closemodal.length; i++) {
@@ -177,10 +181,11 @@ class DNSChecker {
                 modal.classList.toggle('pointer-events-none')
                 body.classList.toggle('modal-active')
             }
-        });
+        });*/
 
     }
 
+    //Gives results in the terminal view
     static showResults(terminal, results) {
         var data = results.map(check => {
             if (check["result"]) {
