@@ -22,6 +22,7 @@ class DNSChecker {
     }
 
     async start(domain, ns) {
+        $(".modal-open").hide();
         // When we start the DNS checker, we will check if terminal view is enabled on not.
         // Depending on the result, we either print the results to terminal or the table view.
         if ($('input#terminal-view').is(':checked')) {
@@ -45,9 +46,9 @@ class DNSChecker {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked'),
-                    "ipv6":$('input#ipv6').is(':checked')
+                    "ipv6": $('input#ipv6').is(':checked')
                 },
-                function(result) {
+                function (result) {
                     // When the response has been received, this will run. Show the results in the terminal.
                     DNSChecker.showResults(terminal, result.checks);
 
@@ -57,14 +58,16 @@ class DNSChecker {
             );
         } else {
             $("#terminal").hide();
+            $("#table-main").hide();
             $("#table-view").html('');
+            $(".modal-test").html('');
             const result = ApiHandler.request(
                 "POST",
                 "/check", {
                     "domain": domain,
                     "nameservers": ns,
                     "delegation": $('input#delegated-domain').is(':checked'),
-                    "ipv6":$('input#ipv6').is(':checked')
+                    "ipv6": $('input#ipv6').is(':checked')
                 },
                 function (result) {
 
@@ -115,10 +118,7 @@ class DNSChecker {
                 // This is a button that will toggle the Extra information Modal
                 $('.modal-open').show();
                 // This will render the modal with the extra information taken from the backend
-                $('.modal-container').append('<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
-
-                    '</div>' +
-
+                $('.modal-test').append(
                     '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
                     '<div class="modal-content py-4 text-left px-6">' +
                     '<!--Title-->' +
@@ -132,14 +132,6 @@ class DNSChecker {
 
             }
         }
-        //Closing button for modal extra-info Modal
-        $('.modal-container').append('<button class="modal-close justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
-
-        // Function to for the close button
-        $('.modal-container').on("click", ".modal-close", function (e) { //user click on remove text links
-            e.preventDefault();
-            toggleModal();
-        });
 
     }
 

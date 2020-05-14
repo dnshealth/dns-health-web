@@ -110,6 +110,6 @@ class ApiHandler {
                 }
                 $("#error-block").show();
             }
-        })
+        });
     }
 }
