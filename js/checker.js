@@ -10,10 +10,9 @@
 'use strict';
 
 
-
 class DNSChecker {
     constructor(table) {
-        // Initialise the terminal view.
+        // Initialize the terminal view.
         this.terminal = new Termynal(
             '#terminal', {
                 startDelay: 500,
@@ -31,7 +30,7 @@ class DNSChecker {
             const terminal = this.terminal;
             terminal.addLines(
                 [
-                    { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
+                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
                 ]
             );
 
@@ -40,9 +39,10 @@ class DNSChecker {
                 "/check", {
                     "domain": domain,
                     "nameservers": ns,
-                    "delegation": $('input#delegated-domain').is(':checked')
+                    "delegation": $('input#delegated-domain').is(':checked'),
+                    "ipv6":$('input#ipv6').is(':checked')
                 },
-                function(result) {
+                function (result) {
                     // When the response has been received, this will run.
                     DNSChecker.showResults(terminal, result.checks);
                     console.log(result.ns);
@@ -59,9 +59,10 @@ class DNSChecker {
                 "/check", {
                     "domain": domain,
                     "nameservers": ns,
-                    "delegation": $('input#delegated-domain').is(':checked')
+                    "delegation": $('input#delegated-domain').is(':checked'),
+                    "ipv6":$('input#ipv6').is(':checked')
                 },
-                function(result) {
+                function (result) {
 
                     DNSChecker.requestedNameserver(result.ns);
 
@@ -102,12 +103,8 @@ class DNSChecker {
                     '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
                     '</tr>'
                 );
-                $('#ex2').append('<div class="px-6 py-4">' +
-                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
-                    ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
-                    ' </div>'
-                );
-
+                // Because modal-open is hidden in index.htm
+                // This is a button that will toggle the Extra information Modal
                 $('.modal-open').show();
                 // This will render the modal with the extra information taken from the backend
                 $('.modal-container').append('<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
@@ -128,33 +125,13 @@ class DNSChecker {
             }
 
         }
-        //Closing button for modal extra-info
+        //Closing button for modal extra-info Modal
         $('.modal-container').append('<button class="modal-close justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
 
-        //Append Button bellow the table to trigger the Modal with the extra information
-
-        //TODO use to close the modal if the modal logic is not working
-        $('.modal-container').on("click", ".modal-close", function(e) { //user click on remove text links
+        // Function to for the close button
+        $('.modal-container').on("click", ".modal-close", function (e) { //user click on remove text links
             e.preventDefault();
-            let closemodal = document.querySelectorAll('.modal-close')
-            for (var i = 0; i < closemodal.length; i++) {
-                closemodal[i].addEventListener('click', toggleModal)
-            }
-
-            document.onkeydown = function(evt) {
-                evt = evt || window.event
-                let isEscape = false
-                if ("key" in evt) {
-                    isEscape = (evt.key === "Escape" || evt.key === "Esc")
-                } else {
-                    isEscape = (evt.keyCode === 27)
-                }
-                if (isEscape && document.body.classList.contains('.modal-active')) {
-                    toggleModal()
-                }
-            };
-
-
+            toggleModal();
         });
 
     }
