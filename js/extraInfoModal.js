@@ -13,11 +13,6 @@ for (var i = 0; i < openmodal.length; i++) {
 const overlay = document.querySelector('.modal-overlay')
 overlay.addEventListener('click', toggleModal)
 
-let closemodal = document.querySelectorAll('.modal-close')
-for (var i = 0; i < closemodal.length; i++) {
-    closemodal[i].addEventListener('click', toggleModal)
-}
-
 document.onkeydown = function(evt) {
     evt = evt || window.event
     let isEscape = false

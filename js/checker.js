@@ -129,57 +129,26 @@ class DNSChecker {
 
         }
         //Closing button for modal extra-info
-        $('.modal-container').append('<button class="modal-close bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
+        $('.modal-container').append('<button class="modal-close justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
 
         //Append Button bellow the table to trigger the Modal with the extra information
 
         //TODO use to close the modal if the modal logic is not working
         $('.modal-container').on("click", ".modal-close", function(e) { //user click on remove text links
             e.preventDefault();
-            $(this).parent().parent().hide()
-
-        });
-        //This section takes care of opening the Modal on a button click (.modal-open)
-        /*$('#table-main').on("click", ".modal-open", function (e) {
-            e.preventDefault();
-            var openmodal = document.querySelectorAll('.modal-open')
-            for (var i = 0; i < openmodal.length; i++) {
-                openmodal[i].addEventListener('click', function (event) {
-                    event.preventDefault()
-                    toggleModal()
-                })
-            }
-
-            const overlay = document.querySelector('.modal-overlay')
-            //overlay.addEventListener('click', toggleModal)
-
-            var closemodal = document.querySelectorAll('.modal-close')
+            let closemodal = document.querySelectorAll('.modal-close')
             for (var i = 0; i < closemodal.length; i++) {
                 closemodal[i].addEventListener('click', toggleModal)
             }
-
-            document.onkeydown = function (evt) {
-                evt = evt || window.event
-                var isEscape = false
-                if ("key" in evt) {
-                    isEscape = (evt.key === "Escape" || evt.key === "Esc")
-                } else {
-                    isEscape = (evt.keyCode === 27)
-                }
-                if (isEscape && document.body.classList.contains('modal-active')) {
-                    toggleModal()
-                }
-            };
-
-
-            function toggleModal() {
+            if (isEscape && document.body.classList.contains('.modal-active')) {
                 const body = document.querySelector('body')
                 const modal = document.querySelector('.modal')
                 modal.classList.toggle('opacity-0')
                 modal.classList.toggle('pointer-events-none')
                 body.classList.toggle('modal-active')
             }
-        });*/
+
+        });
 
     }
 
