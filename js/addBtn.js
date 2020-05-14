@@ -21,21 +21,24 @@ $(document).ready(function () {
                 document.getElementById('ip-egg').innerHTML = "We have your IP: " + ip_address
             });
 
-            // Modal Structure
-            $('#ex1').append('<div role="document">' +
-                '<div class="modal-content">' +
-                '<div class="modal-header">' +
-                '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">OppS!</h2>' +
+            // Easter Egg Modal
+            $('.modal-container-egg').append('<div class="modal-close-egg absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
                 '</div>' +
-                '<div class="modal-body justify-center">' +
+                '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
+                '<div class="modal-content-egg py-4 text-left px-6">' +
+                '<!--Title-->' +
+                '<div class="flex justify-between items-center pb-3">' +
+                '<p class="text-2xl font-bold">OppS</p>' +
+                '</div>' +
+                '<!--Body-->' +
                 '<p id="ip-egg"></p>' +
                 '<p>We have your Browser History</p>' +
                 '<p>Say Hi to The FBI</p>' +
                 '</div>' +
                 '<div class="modal-footer">' +
                 '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
-                '</div>' +
-                '</div>');
+                '</div>'
+            );
         }
     });
 
