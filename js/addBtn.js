@@ -1,7 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function() {
     let max_fields_limit = 4; //set limit for maximum input fields
     let counter = 1; //initialize counter for text box
-    $('.add_more_button').click(function (e) { //click event on add more fields button having class add_more_button
+    $('.add_more_button').click(function(e) { //click event on add more fields button having class add_more_button
         e.preventDefault();
         if (counter < max_fields_limit) { //check conditions
             counter++; //counter increment
@@ -11,15 +11,16 @@ $(document).ready(function () {
                 '</div>'); //add input field
         } else {
             // Show Modal Logic
-            $('#ex1').show()
+            $('.modal-open-egg').show();
 
             //Extract IP and display it in the modal
-            $.get('https://www.cloudflare.com/cdn-cgi/trace', function (data) {
+            $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
                 let regexp = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/gi;
                 let ip_address = data.match(regexp);
                 console.log(data)
                 document.getElementById('ip-egg').innerHTML = "We have your IP: " + ip_address
             });
+
 
             // Easter Egg Modal
             $('.modal-container-egg').append('<div class="modal-close-egg absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
@@ -35,24 +36,24 @@ $(document).ready(function () {
                 '<p>We have your Browser History</p>' +
                 '<p>Say Hi to The FBI</p>' +
                 '</div>' +
-                '<div class="modal-footer">' +
+                '<div class="modal-footer-egg">' +
                 '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
                 '</div>'
             );
+
         }
     });
 
 
-    $('.input_fields_container_part').on("click", ".remove_field", function (e) { //user click on remove text links
+    $('.input_fields_container_part').on("click", ".remove_field", function(e) { //user click on remove text links
         e.preventDefault();
         $(this).parent('div').remove();
         counter--;
     })
-    $('#ex1').on("click", ".remove_field_modal", function (e) { //user click on remove text links
+    $('#ex1').on("click", ".remove_field_modal", function(e) { //user click on remove text links
         e.preventDefault();
         $(this).parent().parent().parent().parent().remove()
         counter--;
     })
 
 });
-
