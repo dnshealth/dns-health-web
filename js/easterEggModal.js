@@ -1,15 +1,19 @@
-let openmodal = document.querySelectorAll('.modal-open-egg')
-for (var i = 0; i < openmodal.length; i++) {
-    openmodal[i].addEventListener('click', function(event) {
+/**
+ This is a script to Render Easter Egg Modal on "DON'T CLICK" btn click
+ **/
+
+let openmodalEgg = document.querySelectorAll('.modal-open-egg')
+for (var i = 0; i < openmodalEgg.length; i++) {
+    openmodalEgg[i].addEventListener('click', function(event) {
         event.preventDefault()
-        toggleModal()
+        toggleModalEgg()
     })
 }
 
-const overlay = document.querySelector('.modal-overlay-egg')
-overlay.addEventListener('click', toggleModal)
+const overlayEgg = document.querySelector('.modal-overlay-egg')
+overlayEgg.addEventListener('click', toggleModalEgg)
 
-function toggleModal() {
+function toggleModalEgg() {
     const body = document.querySelector('body')
     const modal = document.querySelector('.modal-egg')
     modal.classList.toggle('opacity-0')

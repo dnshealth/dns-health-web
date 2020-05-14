@@ -11,7 +11,7 @@ $(document).ready(function() {
                 '</div>'); //add input field
         } else {
             // Show Modal Logic
-            $('.modal-open-egg').show();
+
 
             //Extract IP and display it in the modal
             $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
@@ -20,9 +20,9 @@ $(document).ready(function() {
                 console.log(data)
                 document.getElementById('ip-egg').innerHTML = "We have your IP: " + ip_address
             });
-
-
-            // Easter Egg Modal
+            // Shows the DON'T CLICK button (this button will toggle the easter egg modal
+            $('.modal-open-egg').show();
+            // Easter Egg Modal body
             $('.modal-container-egg').append('<div class="modal-close-egg absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
                 '</div>' +
                 '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
@@ -35,25 +35,42 @@ $(document).ready(function() {
                 '<p id="ip-egg"></p>' +
                 '<p>We have your Browser History</p>' +
                 '<p>Say Hi to The FBI</p>' +
-                '</div>' +
-                '<div class="modal-footer-egg">' +
-                '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
+                '<button tabindex="-1" class="modal-close-egg" style="float: right">&#10060;</button>' +
                 '</div>'
-            );
 
+            );
         }
     });
 
-
+    // Removes the extra input fields that are added and changes the counter
     $('.input_fields_container_part').on("click", ".remove_field", function(e) { //user click on remove text links
         e.preventDefault();
         $(this).parent('div').remove();
         counter--;
     })
-    $('#ex1').on("click", ".remove_field_modal", function(e) { //user click on remove text links
+    // Closes the Easter Egg Modal
+    $('.modal-container-egg').on("click", ".modal-close-egg", function(e) { //user click on remove text links
+
         e.preventDefault();
-        $(this).parent().parent().parent().parent().remove()
-        counter--;
-    })
+        let closemodalEgg = document.querySelectorAll('.modal-close-egg')
+        for (var i = 0; i < closemodalEgg.length; i++) {
+            closemodalEgg[i].addEventListener('click', toggleModalEgg)
+        }
+
+        document.onkeydown = function(evt) {
+            evt = evt || window.event
+            let isEscape = false
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc")
+            } else {
+                isEscape = (evt.keyCode === 27)
+            }
+            if (isEscape && document.body.classList.contains('.modal-active-egg')) {
+                toggleModalEgg()
+            }
+        };
+
+
+    });
 
 });
