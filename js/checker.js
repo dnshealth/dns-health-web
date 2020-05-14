@@ -2,20 +2,23 @@
  * DNSHealth Checker class
  *
  * @author Kasper Oikarinen <kasper@kasgel.fi>
+ * @author Hristo Georgiev <h.georgiev121@gmail.com>
  * @version 0.0.1
  * @license MIT
  */
 
 'use strict';
 
+
 class DNSChecker {
-    constructor() {
-        // Initialise the terminal view to the #terminal HTML DOM element.
+    constructor(table) {
+        // Initialize the terminal view.
         this.terminal = new Termynal(
             '#terminal', {
                 startDelay: 500,
                 lineData: []
             });
+        this.resultsTable = table;
     }
 
     async start(domain, ns) {
@@ -30,7 +33,7 @@ class DNSChecker {
             const terminal = this.terminal;
             terminal.addLines(
                 [
-                    { delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}` }
+                    {delay: 10, type: 'input', typeDelay: 20, value: `dnshealth --domain ${domain} --ns ${ns}`}
                 ]
             );
 
@@ -41,7 +44,8 @@ class DNSChecker {
                 "/check", {
                     "domain": domain,
                     "nameservers": ns,
-                    "delegation": $('input#delegated-domain').is(':checked')
+                    "delegation": $('input#delegated-domain').is(':checked'),
+                    "ipv6":$('input#ipv6').is(':checked')
                 },
                 function(result) {
                     // When the response has been received, this will run. Show the results in the terminal.
@@ -59,9 +63,10 @@ class DNSChecker {
                 "/check", {
                     "domain": domain,
                     "nameservers": ns,
-                    "delegation": $('input#delegated-domain').is(':checked')
+                    "delegation": $('input#delegated-domain').is(':checked'),
+                    "ipv6":$('input#ipv6').is(':checked')
                 },
-                function(result) {
+                function (result) {
 
                     // Print the nameservers we checked towards.
                     DNSChecker.requestedNameserver(result.ns);
@@ -86,42 +91,59 @@ class DNSChecker {
         }
     }
 
+    //Show PASS / FAIL Results in a table view with description
     static showResultsTable(results) {
         // for each check result we got, check if it passed or failed and append the appropriate DOM to table view.
         for (let i in results) {
             if (results[i]["result"]) {
                 // If this particular check passed, show the check as passed.
                 // Set span class to green show that it is shown as green.
+                // This will render the PASSED tests in the table.
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: lawngreen">PASS</td>' +
                     '</tr>');
 
             } else {
+                // This will render the FAILED tests in the table.
                 $('#table-view').append('<tr class="bg-gray-100">' +
                     '<td class="border px-4 py-2">' + results[i]["description"] + '</td>' +
                     '<td class="border px-4 py-2" style="background: red">FAILED</td>' +
                     '</tr>'
+                );
+                // Because modal-open is hidden in index.htm
+                // This is a button that will toggle the Extra information Modal
+                $('.modal-open').show();
+                // This will render the modal with the extra information taken from the backend
+                $('.modal-container').append('<div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
 
-                );
-                $('#ex2').append(
-                    ' <div class="px-6 py-4">' +
-                    ' <div class="font-bold text-xl mb-2">' + results[i]["description"] + '</div>' +
-                    ' <p class="text-gray-700 text-base">' + results[i]["details"] + ' </p>' +
-                    ' </div>'
-                );
+                    '</div>' +
+
+                    '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
+                    '<div class="modal-content py-4 text-left px-6">' +
+                    '<!--Title-->' +
+                    '<div class="flex justify-between items-center pb-3">' +
+                    '<p class="text-2xl font-bold">' + results[i]["description"] + '</p>' +
+                    '</div>' +
+
+                    '<!--Body-->' +
+                    '<p>' + results[i]["details"] + '</p>' +
+                    '</div>');
+
             }
         }
-        $('#table-main').append('<button id="failBTN" type="button" class="justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-toggle="modal" data-target="#ex2">Show me what failed</button>')
+        //Closing button for modal extra-info Modal
+        $('.modal-container').append('<button class="modal-close justify-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Close</button>')
 
-        $('#ex2').on("click", ".remove_field_modal2", function (e) { //user click on remove text links
+        // Function to for the close button
+        $('.modal-container').on("click", ".modal-close", function (e) { //user click on remove text links
             e.preventDefault();
-            $(this).parent().parent().hide()
-
+            toggleModal();
         });
 
     }
 
+    //Gives results in the terminal view
     static showResults(terminal, results) {
         // Create an array of check result objects with map() which we then pass to the terminal script, to print the results.
         const data = results.map(check => {

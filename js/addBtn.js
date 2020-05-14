@@ -1,3 +1,12 @@
+/**
+ * Included here:
+ * Add extra input fields on a button click
+ * Functionality for Easter Egg Modal
+ *
+ * @author Hristo Georgiev <h.georgiev121@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
 $(document).ready(function () {
     let max_fields_limit = 4; //set limit for maximum input fields
     let counter = 1; //initialize counter for text box
@@ -10,8 +19,6 @@ $(document).ready(function () {
                 '<input type="text" name="ns[]" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>' +
                 '</div>'); //add input field
         } else {
-            // Show Modal Logic
-            $('#ex1').show()
 
             //Extract IP and display it in the modal
             $.get('https://www.cloudflare.com/cdn-cgi/trace', function (data) {
@@ -21,35 +28,37 @@ $(document).ready(function () {
                 document.getElementById('ip-egg').innerHTML = "We have your IP: " + ip_address
             });
 
-            // Modal Structure
-            $('#ex1').append('<div role="document">' +
-                '<div class="modal-content">' +
-                '<div class="modal-header">' +
-                '<h2 class="modal-title" id="exampleModalLabel" style="text-align: center">OppS!</h2>' +
+            // Shows the DON'T CLICK button (this button will toggle the easter egg modal
+            $('.modal-open-egg').show();
+            // Easter Egg Modal body
+            $('.modal-container-egg').append('<div class="modal-close-egg absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">' +
                 '</div>' +
-                '<div class="modal-body justify-center">' +
+                '<!-- Add margin if you want to see some of the overlay behind the modal-->' +
+                '<div class="modal-content-egg py-4 text-left px-6">' +
+                '<!--Title-->' +
+                '<div class="flex justify-between items-center pb-3">' +
+                '<p class="text-2xl font-bold">OppS</p>' +
+                '</div>' +
+                '<!--Body-->' +
                 '<p id="ip-egg"></p>' +
                 '<p>We have your Browser History</p>' +
                 '<p>Say Hi to The FBI</p>' +
-                '</div>' +
-                '<div class="modal-footer">' +
-                '<button tabindex="-1" class="remove_field_modal" style="float: right">&#10060;</button>' +
-                '</div>' +
-                '</div>');
+                '<button tabindex="-1" class="modal-close-egg" style="float: right">&#10060;</button>' +
+                '</div>'
+            );
         }
     });
 
-
+    // Removes the extra input fields that are added and changes the counter
     $('.input_fields_container_part').on("click", ".remove_field", function (e) { //user click on remove text links
         e.preventDefault();
         $(this).parent('div').remove();
         counter--;
     })
-    $('#ex1').on("click", ".remove_field_modal", function (e) { //user click on remove text links
+    // Closes the Easter Egg Modal
+    $('.modal-container-egg').on("click", ".modal-close-egg", function (e) { //user click on remove text links
         e.preventDefault();
-        $(this).parent().parent().parent().parent().remove()
-        counter--;
-    })
+        toggleModalEgg()
+    });
 
 });
-
